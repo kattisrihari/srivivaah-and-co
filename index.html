@@ -3,24 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shweta Patil | Srivaah & Co. Portfolio</title>
+  <title>Shweta Patil | Sri Vivaah & Co</title>
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
 
   <style>
-    /* Color Scheme & Typography Settings */
+    /* Exact Color Palette & Font Styles matching the Portfolio Slides */
     :root {
-      --primary-maroon: #5C061C;
-      --accent-gold: #D4AF37;
-      --bg-cream: #FAF7F2;
-      --text-dark: #2A2A2A;
-      --text-muted: #666666;
+      --maroon-bg: #800010;
+      --maroon-text: #800010;
+      --cream-bg: #FAF7F2;
       --white: #FFFFFF;
-      --font-serif: 'Playfair Display', Georgia, serif;
-      --font-sans: 'Montserrat', sans-serif;
+      --text-dark: #2A2A2A;
+      --font-heading: 'Playfair Display', Georgia, serif;
+      --font-body: 'Montserrat', sans-serif;
     }
 
     * {
@@ -30,17 +29,17 @@
     }
 
     body {
-      font-family: var(--font-sans);
-      background-color: var(--bg-cream);
+      font-family: var(--font-body);
+      background-color: var(--cream-bg);
       color: var(--text-dark);
       line-height: 1.6;
     }
 
-    /* Fixed Navigation Bar */
+    /* Fixed Top Navigation Bar */
     header {
       position: sticky;
       top: 0;
-      background-color: var(--primary-maroon);
+      background-color: var(--maroon-bg);
       box-shadow: 0 2px 10px rgba(0,0,0,0.15);
       z-index: 1000;
     }
@@ -55,9 +54,9 @@
     }
 
     .brand-logo {
-      font-family: var(--font-serif);
-      color: var(--accent-gold);
-      font-size: 1.3rem;
+      font-family: var(--font-body);
+      color: var(--cream-bg);
+      font-size: 1.1rem;
       font-weight: 700;
       letter-spacing: 2px;
       text-decoration: none;
@@ -70,29 +69,28 @@
     }
 
     .nav-links a {
-      color: var(--bg-cream);
+      color: var(--cream-bg);
       text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 500;
+      font-size: 0.8rem;
+      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 1.5px;
       padding: 0.5rem 0;
-      transition: color 0.3s ease, border-bottom 0.3s ease;
+      transition: opacity 0.3s ease, border-bottom 0.3s ease;
       border-bottom: 2px solid transparent;
+      opacity: 0.85;
     }
 
     .nav-links a:hover,
     .nav-links a.active {
-      color: var(--accent-gold);
-      border-bottom: 2px solid var(--accent-gold);
+      opacity: 1;
+      border-bottom: 2px solid var(--cream-bg);
     }
 
-    /* Page Section Containers */
+    /* Page Sections Container */
     .page-section {
       display: none;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 4rem 2rem;
+      width: 100%;
       min-height: calc(100vh - 70px);
       animation: fadeIn 0.4s ease-in-out;
     }
@@ -102,108 +100,217 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
+      from { opacity: 0; transform: translateY(6px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Typography Elements */
-    h1, h2, h3 {
-      font-family: var(--font-serif);
-      color: var(--primary-maroon);
+    /* Reusable Portfolio Slide Container */
+    .slide-frame {
+      max-width: 1100px;
+      margin: 3rem auto;
+      background: var(--cream-bg);
+      border: 1px solid var(--maroon-text);
+      padding: 2.5rem 3rem;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     }
 
-    .section-title {
-      font-size: 2.2rem;
-      text-align: center;
-      margin-bottom: 0.5rem;
-      letter-spacing: 1px;
+    .slide-frame.dark-theme {
+      background: var(--maroon-bg);
+      color: var(--cream-bg);
+      border-color: var(--cream-bg);
     }
 
-    .section-subtitle {
-      text-align: center;
-      color: var(--accent-gold);
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      margin-bottom: 3rem;
+    /* Top Header Bar inside Slides */
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--maroon-text);
+      padding-bottom: 0.8rem;
+      margin-bottom: 2.5rem;
+      font-size: 0.8rem;
       font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--maroon-text);
+      text-transform: uppercase;
     }
 
-    /* Grid Layouts */
-    .grid-2-col {
+    .slide-frame.dark-theme .slide-header {
+      border-bottom: 1px solid var(--cream-bg);
+      color: var(--cream-bg);
+    }
+
+    /* Page Title Headings */
+    .slide-title {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 4rem;
+      line-height: 1.1;
+      color: var(--maroon-text);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .slide-frame.dark-theme .slide-title {
+      color: var(--cream-bg);
+    }
+
+    /* Red / White Decorative Circles */
+    .dots-indicator {
+      display: flex;
+      gap: 10px;
+      margin-top: 2rem;
+    }
+
+    .dots-indicator .dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: var(--maroon-text);
+    }
+
+    .slide-frame.dark-theme .dots-indicator .dot {
+      background-color: var(--cream-bg);
+    }
+
+    /* Page 1: Welcome */
+    .welcome-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: end;
+      min-height: 400px;
+    }
+
+    .welcome-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .welcome-footer {
+      margin-top: auto;
+      padding-top: 3rem;
+    }
+
+    .welcome-footer .website-label {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.8;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .welcome-footer .website-url {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .welcome-image-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    .welcome-image-container img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Page 2: About Me */
+    .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 3rem;
       align-items: center;
     }
 
-    .grid-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    /* Image Element Styling */
-    .editable-image {
-      width: 100%;
-      height: auto;
-      border-radius: 4px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      object-fit: cover;
-    }
-
-    /* Hero / Welcome Page */
-    .welcome-hero {
-      text-align: center;
-      padding: 2rem 0;
-    }
-
-    .welcome-hero h1 {
-      font-size: 3rem;
-      color: var(--primary-maroon);
-      margin-bottom: 0.5rem;
-    }
-
-    .welcome-hero p.tagline {
-      font-size: 1.1rem;
-      letter-spacing: 2px;
-      color: var(--accent-gold);
-      margin-bottom: 2.5rem;
+    .about-text p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--maroon-text);
+      margin-bottom: 1.5rem;
       font-weight: 500;
     }
 
-    /* Cards Styling (Design Philosophy) */
-    .card {
-      background-color: var(--white);
-      padding: 2rem;
-      border-radius: 6px;
-      border-top: 4px solid var(--accent-gold);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    .about-image img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      display: block;
     }
 
-    .card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.75rem;
+    /* Page 3: Design Philosophy */
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .philosophy-col-1 h3,
+    .philosophy-col-3 h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
       letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
     }
 
-    .card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
+    .philosophy-col-1 p,
+    .philosophy-col-3 p {
+      font-size: 0.85rem;
       line-height: 1.6;
+      margin-bottom: 2rem;
+      opacity: 0.9;
     }
 
-    /* Contact Form Styling */
+    .philosophy-col-2 img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+    }
+
+    .philosophy-col-3 img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Page 4: Design Inspiration */
+    .inspiration-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr 300px;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .inspiration-grid img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    .inspiration-text p {
+      font-size: 1rem;
+      color: var(--maroon-text);
+      line-height: 1.7;
+      font-weight: 500;
+    }
+
+    /* Page 5: Contact / Inquiry Form */
     .contact-container {
       max-width: 600px;
       margin: 0 auto;
       background: var(--white);
       padding: 2.5rem;
-      border-radius: 8px;
+      border: 1px solid var(--maroon-text);
       box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-      border: 1fr solid var(--accent-gold);
     }
 
     .form-group {
@@ -213,57 +320,58 @@
     .form-group label {
       display: block;
       margin-bottom: 0.5rem;
-      font-size: 0.85rem;
-      font-weight: 600;
+      font-size: 0.8rem;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
-      color: var(--primary-maroon);
+      color: var(--maroon-text);
     }
 
     .form-group input,
     .form-group textarea {
       width: 100%;
       padding: 0.8rem 1rem;
-      border: 1px solid #DDDDDD;
-      border-radius: 4px;
-      font-family: var(--font-sans);
+      border: 1px solid #CCCCCC;
+      font-family: var(--font-body);
       font-size: 0.95rem;
       background-color: #FAFAFA;
-      transition: border-color 0.3s ease;
     }
 
     .form-group input:focus,
     .form-group textarea:focus {
       outline: none;
-      border-color: var(--accent-gold);
+      border-color: var(--maroon-text);
       background-color: var(--white);
     }
 
     .submit-btn {
       width: 100%;
       padding: 1rem;
-      background-color: var(--primary-maroon);
-      color: var(--accent-gold);
+      background-color: var(--maroon-bg);
+      color: var(--cream-bg);
       border: none;
-      border-radius: 4px;
-      font-size: 0.9rem;
-      font-weight: 600;
+      font-size: 0.85rem;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 2px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: opacity 0.3s ease;
     }
 
     .submit-btn:hover {
-      background-color: #420413;
+      opacity: 0.9;
     }
 
     /* Mobile Responsive Styles */
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
+      .slide-frame {
+        padding: 1.5rem;
+        margin: 1rem;
+      }
+
       nav {
         flex-direction: column;
         gap: 1rem;
-        padding: 1rem;
       }
 
       .nav-links {
@@ -272,36 +380,35 @@
         gap: 0.8rem;
       }
 
-      .nav-links a {
-        font-size: 0.75rem;
-      }
-
-      .grid-2-col {
+      .welcome-grid, .about-grid, .philosophy-grid, .inspiration-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
       }
 
-      .welcome-hero h1 {
-        font-size: 2.2rem;
+      .slide-title {
+        font-size: 2.8rem;
       }
 
-      .section-title {
-        font-size: 1.8rem;
+      .welcome-image-container img,
+      .about-image img,
+      .philosophy-col-2 img,
+      .inspiration-grid img {
+        height: 300px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation Header -->
+  <!-- Top Clickable Navigation Header -->
   <header>
     <nav>
-      <a href="#welcome" class="brand-logo" onclick="navigateTo('welcome')">SRIVAAH & CO</a>
+      <a href="#welcome" class="brand-logo" onclick="navigateTo('welcome')">SRI VIVAAH & CO</a>
       <ul class="nav-links">
         <li><a href="#welcome" id="nav-welcome" class="active" onclick="navigateTo('welcome')">Welcome</a></li>
         <li><a href="#about" id="nav-about" onclick="navigateTo('about')">About Me</a></li>
         <li><a href="#philosophy" id="nav-philosophy" onclick="navigateTo('philosophy')">Design Philosophy</a></li>
-        <li><a href="#inspiration" id="nav-inspiration" onclick="navigateTo('inspiration')">Inspiration</a></li>
+        <li><a href="#inspiration" id="nav-inspiration" onclick="navigateTo('inspiration')">Design Inspiration</a></li>
         <li><a href="#contact" id="nav-contact" onclick="navigateTo('contact')">Inquire</a></li>
       </ul>
     </nav>
@@ -310,151 +417,226 @@
   <main>
     <!-- Page 1: Welcome -->
     <section id="welcome" class="page-section active">
-      <div class="welcome-hero">
-        <h1 class="editable-text">Welcome to SRIVAAH & CO</h1>
-        <p class="tagline editable-text">WEDDING PLANNER 2026 @SRIVAAH&CO</p>
-        <p class="editable-text" style="margin-bottom: 2rem; color: var(--text-muted);">WWW.SRIVAAH.CO.IN</p>
-        
-        <div style="max-width: 900px; margin: 0 auto;">
-          <!-- Replace src URL with your image path when needed -->
-          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80" alt="Wedding Floral Arch" class="editable-image" style="max-height: 500px;">
+      <div class="slide-frame dark-theme">
+        <div class="slide-header">
+          <span>WEDDING PLANNER</span>
+          <span>2026</span>
+          <span>@SRIVIVAAH&CO</span>
+        </div>
+
+        <div class="welcome-grid">
+          <div class="welcome-left">
+            <div>
+              <h1 class="slide-title editable-text">Wecoleme to<br>SRI VIVAAH & CO</h1>
+              <div class="dots-indicator">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+            </div>
+
+            <div class="welcome-footer">
+              <span class="website-label editable-text">WEBSITE</span>
+              <span class="website-url editable-text">WWW.SRIVIVAAH.CO.IN</span>
+            </div>
+          </div>
+
+          <div class="welcome-image-container">
+            <!-- Decoration Image -->
+            <img src="decoration.png" alt="Sri Vivaah Wedding Decoration Arch" class="editable-image">
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Page 2: About Me -->
     <section id="about" class="page-section">
-      <h2 class="section-title editable-text">About Me</h2>
-      <p class="section-subtitle editable-text">Shweta Patil — Creative Wedding Designer</p>
-      
-      <div class="grid-2-col">
-        <div>
-          <!-- Replace src URL with your profile image path when needed -->
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Shweta Patil" class="editable-image">
+      <div class="slide-frame">
+        <div class="slide-header">
+          <span>WEDDING PLANNER</span>
+          <span>2026</span>
+          <span>@SRIVIVAAH</span>
         </div>
-        <div>
-          <h3 class="editable-text" style="margin-bottom: 1rem; color: var(--primary-maroon);">Crafting Magical Experiences</h3>
-          <p class="editable-text" style="margin-bottom: 1.5rem;">
-            A creative wedding designer who gets into the nitty-gritty of the details and makes your big day magical.
-          </p>
-          <p class="editable-text">
-            I have curated, planned, and managed over 50+ weddings ranging from different religions, traditions, and cultures. A ritual that is specific to your family? We get it and got you covered.
-          </p>
+
+        <div class="about-grid">
+          <div class="about-text">
+            <h1 class="slide-title editable-text">About Me</h1>
+            
+            <p class="editable-text">
+              A creative wedding designer who gets into the nittty gritty of the details and makes you big day magical.
+            </p>
+            
+            <p class="editable-text">
+              I have curated, planned, managed over 50+ weddings ranging from different religions, traditions and culture.
+            </p>
+            
+            <p class="editable-text">
+              A ritual that is specific to your family? We get it and got you covered.
+            </p>
+
+            <div class="dots-indicator">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+          </div>
+
+          <div class="about-image">
+            <!-- Girl's Image -->
+            <img src="girl.png" alt="Shweta Patil - Wedding Designer" class="editable-image">
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Page 3: Design Philosophy -->
     <section id="philosophy" class="page-section">
-      <h2 class="section-title editable-text">Design Philosophy</h2>
-      <p class="section-subtitle editable-text">Our Core Guiding Principles</p>
-
-      <div class="grid-cards">
-        <div class="card">
-          <h3 class="editable-text">EXPRESSION OF IDENTITY</h3>
-          <p class="editable-text">Each wedding has its own identity which constitutes a unique blend of traditions, family-centric rituals, language, and cultural heritage.</p>
+      <div class="slide-frame dark-theme">
+        <div class="slide-header">
+          <span>WEDDING PLANNER</span>
+          <span>2026</span>
+          <span>@SRIVIVAAH&CO</span>
         </div>
 
-        <div class="card">
-          <h3 class="editable-text">TEAM AT SRIVAAH IS BUILT FOR THIS</h3>
-          <p class="editable-text">Having conducted 50+ marriages across diverse backgrounds and customs with smooth execution.</p>
-        </div>
+        <h1 class="slide-title editable-text">Design<br>Philosophy</h1>
 
-        <div class="card">
-          <h3 class="editable-text">ATTENTION TO CRAFTSMANSHIP</h3>
-          <p class="editable-text">Design of stage, flowers, lights, sounds, food, and everything else designed and discussed meticulously in advance.</p>
-        </div>
+        <div class="philosophy-grid">
+          <div class="philosophy-col-1">
+            <h3 class="editable-text">EXPRESSION OF IDENTITY</h3>
+            <p class="editable-text">Each wedding has it's own identity which constitutes of a unique blend of traditions, family centric rituals, language descendent riti riwaaj</p>
 
-        <div class="card">
-          <h3 class="editable-text">CREATIVITY & FUNCTION</h3>
-          <p class="editable-text">Execution on the big day is the biggest detail. Our team makes the experience seamless and a grand visual event.</p>
+            <h3 class="editable-text">TEAM AT SRI VIVAAH IS BUILT FOR THIS</h3>
+            <p class="editable-text">Having conducted 50+ marriages of</p>
+          </div>
+
+          <div class="philosophy-col-2">
+            <!-- Placeholder for Center Mandap Image -->
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" alt="Mandap Decor" class="editable-image">
+          </div>
+
+          <div class="philosophy-col-3">
+            <!-- Placeholder for Top Arch Image -->
+            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80" alt="Floral Entrance" class="editable-image">
+
+            <h3 class="editable-text">ATTENTION TO CRAFTSMANSHIP</h3>
+            <p class="editable-text">Design of stage, flowers, lights, sounds, food and everything else designed and discussed in advance</p>
+
+            <h3 class="editable-text">BALANCE BETWEEN CREATIVITY AND FUNCTION</h3>
+            <p class="editable-text">Execution on the big day is the biggest hastle. Our team makes the experience seamless and a grand visual experince</p>
+
+            <div class="dots-indicator">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Page 4: Design Inspiration -->
     <section id="inspiration" class="page-section">
-      <h2 class="section-title editable-text">Design Inspiration</h2>
-      <p class="section-subtitle editable-text">Tailored Themes & Concepts</p>
-
-      <div class="grid-2-col">
-        <div>
-          <h3 class="editable-text" style="margin-bottom: 1.5rem;">Bringing Your Vision to Life</h3>
-          <p class="editable-text" style="margin-bottom: 1.5rem;">
-            The bride has a specific theme in mind and expects the mood board to be replicated on her wedding day.
-          </p>
-          <p class="editable-text">
-            No worries, we at Srivaah got you covered with over 30+ varieties of designs for engagement, reception, wedding, sangeet, and baraat styles that you can choose from. We are always open to working with custom new designs as well.
-          </p>
+      <div class="slide-frame">
+        <div class="slide-header">
+          <span>WEDDING PLANNER</span>
+          <span>2026</span>
+          <span>@SRIVIVAAH</span>
         </div>
-        <div>
-          <!-- Replace src URL with your inspiration image path when needed -->
-          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Wedding Decor Entrance" class="editable-image">
+
+        <div class="inspiration-grid">
+          <div>
+            <!-- Placeholder for Left Mirror Image -->
+            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=600&q=80" alt="Welcome Mirror Board" class="editable-image">
+          </div>
+
+          <div class="inspiration-text">
+            <h1 class="slide-title editable-text">Design<br>Inspiration</h1>
+            <p class="editable-text">
+              The bride has a specific theme in mind and she expects the mood board to be replicated on her wedding day. No worries, we at Vovaah got you covered with over 30+ varities of designs for engagement, reception, wedding, sangeet, baraat styles that you can choose from and are open to working with new designs as well
+            </p>
+            <div class="dots-indicator">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+          </div>
+
+          <div>
+            <!-- Placeholder for Right Door Decor Image -->
+            <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=600&q=80" alt="Traditional Door Entrance Decor" class="editable-image">
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Page 5: Contact / Inquiry Form -->
     <section id="contact" class="page-section">
-      <h2 class="section-title editable-text">Inquire With Us</h2>
-      <p class="section-subtitle editable-text">Let's Plan Your Big Day</p>
+      <div class="slide-frame">
+        <div class="slide-header">
+          <span>WEDDING PLANNER</span>
+          <span>2026</span>
+          <span>INQUIRE</span>
+        </div>
 
-      <div class="contact-container">
-        <form id="inquiryForm" onsubmit="handleFormSubmit(event)">
-          <div class="form-group">
-            <label for="fullName">Full Name</label>
-            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
-          </div>
+        <h1 class="slide-title editable-text" style="text-align: center;">Get in Touch</h1>
 
-          <div class="form-group">
-            <label for="mobileNumber">Mobile Number</label>
-            <input type="tel" id="mobileNumber" name="mobileNumber" placeholder="Enter your mobile number" required>
-          </div>
+        <div class="contact-container">
+          <form id="inquiryForm" onsubmit="handleFormSubmit(event)">
+            <div class="form-group">
+              <label for="fullName">Full Name</label>
+              <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+            </div>
 
-          <div class="form-group">
-            <label for="phoneNumber">Phone Number (Alternative)</label>
-            <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter alternative phone number">
-          </div>
+            <div class="form-group">
+              <label for="mobileNumber">Mobile Number</label>
+              <input type="tel" id="mobileNumber" name="mobileNumber" placeholder="Enter your mobile number" required>
+            </div>
 
-          <div class="form-group">
-            <label for="inquiryDetails">Inquiry Details</label>
-            <textarea id="inquiryDetails" name="inquiryDetails" rows="4" placeholder="Tell us about your event, dates, or specific ideas..." required></textarea>
-          </div>
+            <div class="form-group">
+              <label for="phoneNumber">Alternative Phone Number</label>
+              <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter alternative phone number">
+            </div>
 
-          <button type="submit" class="submit-btn">Send Inquiry</button>
-        </form>
+            <div class="form-group">
+              <label for="inquiryDetails">Inquiry Details</label>
+              <textarea id="inquiryDetails" name="inquiryDetails" rows="4" placeholder="Tell us about your wedding date, venue, or requirements..." required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Inquiry</button>
+          </form>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- Interactive Single-Page Routing Logic -->
+  <!-- Navigation Routing Script -->
   <script>
     function navigateTo(pageId) {
-      // Hide all pages
+      // Hide all page sections
       const sections = document.querySelectorAll('.page-section');
       sections.forEach(section => section.classList.remove('active'));
 
-      // Deactivate all navigation links
+      // Remove active state from nav links
       const navLinks = document.querySelectorAll('.nav-links a');
       navLinks.forEach(link => link.classList.remove('active'));
 
-      // Show selected page
+      // Display targeted section
       const targetSection = document.getElementById(pageId);
       if (targetSection) {
         targetSection.classList.add('active');
       }
 
-      // Highlight active navigation link
+      // Highlight active nav item
       const activeNav = document.getElementById(`nav-${pageId}`);
       if (activeNav) {
         activeNav.classList.add('active');
       }
 
-      // Scroll smoothly to top
+      // Scroll top smoothly
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Handle hash changes on page reload or back button navigation
+    // Handle initial hash in URL
     window.addEventListener('hashchange', () => {
       const hash = window.location.hash.replace('#', '');
       if (hash) {
@@ -462,10 +644,10 @@
       }
     });
 
-    // Handle form submission
+    // Form submission action
     function handleFormSubmit(event) {
       event.preventDefault();
-      alert('Thank you for reaching out! We have received your inquiry and will contact you shortly.');
+      alert('Thank you! Your inquiry has been sent to Sri Vivaah & Co.');
       document.getElementById('inquiryForm').reset();
     }
   </script>
