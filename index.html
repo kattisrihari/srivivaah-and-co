@@ -362,6 +362,239 @@
       opacity: 0.9;
     }
 
+    /* Page 6: Mood Board */
+    .moodboard-intro {
+      max-width: 680px;
+      margin-bottom: 2.5rem;
+    }
+
+    .moodboard-intro p {
+      font-size: 0.95rem;
+      color: var(--maroon-text);
+      line-height: 1.7;
+      font-weight: 500;
+    }
+
+    .moodboard-form-section {
+      background: var(--white);
+      border: 1px solid var(--maroon-text);
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }
+
+    .moodboard-form-section h3 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--maroon-text);
+      margin-bottom: 1.5rem;
+    }
+
+    .image-link-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .image-link-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .image-link-row input {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border: 1px solid #CCC;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      background: #FAFAFA;
+      transition: border-color 0.2s;
+    }
+
+    .image-link-row input:focus {
+      outline: none;
+      border-color: var(--maroon-text);
+      background: var(--white);
+    }
+
+    .remove-link-btn {
+      background: none;
+      border: 1px solid #CCC;
+      color: #999;
+      width: 34px;
+      height: 34px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .remove-link-btn:hover {
+      border-color: var(--maroon-text);
+      color: var(--maroon-text);
+    }
+
+    .add-link-btn {
+      background: none;
+      border: none;
+      color: var(--maroon-text);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      padding: 0.4rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-transform: uppercase;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+      margin-bottom: 1.5rem;
+    }
+
+    .add-link-btn:hover {
+      opacity: 1;
+    }
+
+    .moodboard-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .render-btn {
+      padding: 0.85rem 2rem;
+      background-color: var(--maroon-bg);
+      color: var(--cream-bg);
+      border: none;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+
+    .render-btn:hover { opacity: 0.88; }
+
+    .clear-btn {
+      padding: 0.85rem 1.5rem;
+      background: none;
+      color: var(--maroon-text);
+      border: 1px solid var(--maroon-text);
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .clear-btn:hover {
+      background: var(--maroon-bg);
+      color: var(--cream-bg);
+    }
+
+    /* Gallery */
+    .moodboard-gallery-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--maroon-text);
+      border-bottom: 1px solid var(--maroon-text);
+      padding-bottom: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .moodboard-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .gallery-card {
+      position: relative;
+      border: 1px solid #DDD;
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-card .card-remove {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: rgba(128,0,16,0.85);
+      color: white;
+      border: none;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .gallery-card:hover .card-remove {
+      opacity: 1;
+    }
+
+    .gallery-card .card-error {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.5rem;
+      background: #F5F0EE;
+      color: #999;
+      font-size: 0.75rem;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .gallery-card .card-error span {
+      font-size: 1.5rem;
+    }
+
+    .gallery-empty {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: #AAA;
+      font-size: 0.9rem;
+      font-style: italic;
+      grid-column: 1 / -1;
+    }
+
     /* Mobile Responsive Styles */
     @media (max-width: 900px) {
       .slide-frame {
@@ -410,6 +643,7 @@
         <li><a href="#philosophy" id="nav-philosophy" onclick="navigateTo('philosophy')">Design Philosophy</a></li>
         <li><a href="#inspiration" id="nav-inspiration" onclick="navigateTo('inspiration')">Design Inspiration</a></li>
         <li><a href="#contact" id="nav-contact" onclick="navigateTo('contact')">Inquire</a></li>
+        <li><a href="#moodboard" id="nav-moodboard" onclick="navigateTo('moodboard')">Mood Board</a></li>
       </ul>
     </nav>
   </header>
@@ -607,6 +841,50 @@
         </div>
       </div>
     </section>
+    <!-- Page 6: Mood Board -->
+    <section id="moodboard" class="page-section">
+      <div class="slide-frame">
+        <div class="slide-header">
+          <span>WEDDING PLANNER</span>
+          <span>2026</span>
+          <span>MOOD BOARD</span>
+        </div>
+
+        <h1 class="slide-title">Mood Board</h1>
+
+        <div class="moodboard-intro">
+          <p>Paste image links from Pinterest, Unsplash, or any direct image URL to build your personal wedding mood board. Submit to render your inspiration gallery below.</p>
+        </div>
+
+        <!-- Link Entry Form -->
+        <div class="moodboard-form-section">
+          <h3>Add Image Links</h3>
+
+          <div class="image-link-list" id="linkList">
+            <div class="image-link-row">
+              <input type="url" placeholder="Paste an image URL (e.g. https://images.unsplash.com/...)" />
+              <button class="remove-link-btn" onclick="removeLinkRow(this)" title="Remove">×</button>
+            </div>
+          </div>
+
+          <button class="add-link-btn" onclick="addLinkRow()">
+            <span style="font-size:1.1rem;">+</span> Add another image link
+          </button>
+
+          <div class="moodboard-actions">
+            <button class="render-btn" onclick="renderGallery()">Render Mood Board</button>
+            <button class="clear-btn" onclick="clearAll()">Clear All</button>
+          </div>
+        </div>
+
+        <!-- Gallery Output -->
+        <div id="gallerySection" style="display:none;">
+          <div class="moodboard-gallery-title" id="galleryCount">Your Mood Board — 0 Images</div>
+          <div class="moodboard-gallery" id="moodboardGallery"></div>
+        </div>
+
+      </div>
+    </section>
   </main>
 
   <!-- Navigation Routing Script -->
@@ -643,6 +921,159 @@
         navigateTo(hash);
       }
     });
+
+    // ─── Mood Board Logic ───────────────────────────────────────────────
+
+    // Load saved gallery from localStorage on page load
+    window.addEventListener('load', () => {
+      loadSavedGallery();
+    });
+
+    function addLinkRow(value) {
+      const list = document.getElementById('linkList');
+      const row = document.createElement('div');
+      row.className = 'image-link-row';
+      row.innerHTML = `
+        <input type="url" placeholder="Paste an image URL (e.g. https://images.unsplash.com/...)" value="${value || ''}" />
+        <button class="remove-link-btn" onclick="removeLinkRow(this)" title="Remove">×</button>
+      `;
+      list.appendChild(row);
+      row.querySelector('input').focus();
+    }
+
+    function removeLinkRow(btn) {
+      const list = document.getElementById('linkList');
+      const rows = list.querySelectorAll('.image-link-row');
+      if (rows.length > 1) {
+        btn.closest('.image-link-row').remove();
+      } else {
+        // Clear the last remaining input instead of removing it
+        btn.closest('.image-link-row').querySelector('input').value = '';
+      }
+    }
+
+    function renderGallery() {
+      const inputs = document.querySelectorAll('#linkList .image-link-row input');
+      const urls = Array.from(inputs).map(i => i.value.trim()).filter(Boolean);
+
+      if (urls.length === 0) {
+        alert('Please enter at least one image URL before rendering.');
+        return;
+      }
+
+      // Save to localStorage
+      localStorage.setItem('moodboard_urls', JSON.stringify(urls));
+
+      buildGallery(urls);
+    }
+
+    function buildGallery(urls) {
+      const gallery = document.getElementById('moodboardGallery');
+      const section = document.getElementById('gallerySection');
+      const countLabel = document.getElementById('galleryCount');
+
+      gallery.innerHTML = '';
+
+      if (urls.length === 0) {
+        section.style.display = 'none';
+        return;
+      }
+
+      section.style.display = 'block';
+      countLabel.textContent = `Your Mood Board — ${urls.length} Image${urls.length !== 1 ? 's' : ''}`;
+
+      urls.forEach((url, index) => {
+        const card = document.createElement('div');
+        card.className = 'gallery-card';
+        card.dataset.url = url;
+
+        const img = document.createElement('img');
+        img.alt = `Mood board image ${index + 1}`;
+
+        img.onerror = () => {
+          card.innerHTML = `
+            <div class="card-error">
+              <span>🖼️</span>
+              <div>Could not load image.<br>Check the URL or try a direct link.</div>
+            </div>
+            <button class="card-remove" onclick="removeCard(this)" title="Remove">×</button>
+          `;
+        };
+
+        img.src = url;
+
+        const removeBtn = document.createElement('button');
+        removeBtn.className = 'card-remove';
+        removeBtn.title = 'Remove';
+        removeBtn.textContent = '×';
+        removeBtn.onclick = () => removeCard(removeBtn);
+
+        card.appendChild(img);
+        card.appendChild(removeBtn);
+        gallery.appendChild(card);
+      });
+
+      // Scroll to gallery
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function removeCard(btn) {
+      const card = btn.closest('.gallery-card');
+      const url = card.dataset.url;
+      card.remove();
+
+      // Update localStorage
+      let saved = JSON.parse(localStorage.getItem('moodboard_urls') || '[]');
+      saved = saved.filter(u => u !== url);
+      localStorage.setItem('moodboard_urls', JSON.stringify(saved));
+
+      // Update count label
+      const remaining = document.querySelectorAll('#moodboardGallery .gallery-card').length;
+      document.getElementById('galleryCount').textContent = `Your Mood Board — ${remaining} Image${remaining !== 1 ? 's' : ''}`;
+
+      if (remaining === 0) {
+        document.getElementById('gallerySection').style.display = 'none';
+      }
+    }
+
+    function clearAll() {
+      if (confirm('Clear all image links and the gallery?')) {
+        // Reset input fields to one empty row
+        const list = document.getElementById('linkList');
+        list.innerHTML = `
+          <div class="image-link-row">
+            <input type="url" placeholder="Paste an image URL (e.g. https://images.unsplash.com/...)" />
+            <button class="remove-link-btn" onclick="removeLinkRow(this)" title="Remove">×</button>
+          </div>
+        `;
+        document.getElementById('gallerySection').style.display = 'none';
+        document.getElementById('moodboardGallery').innerHTML = '';
+        localStorage.removeItem('moodboard_urls');
+      }
+    }
+
+    function loadSavedGallery() {
+      try {
+        const saved = JSON.parse(localStorage.getItem('moodboard_urls') || '[]');
+        if (saved.length > 0) {
+          // Re-populate input fields
+          const list = document.getElementById('linkList');
+          list.innerHTML = '';
+          saved.forEach((url, i) => {
+            const row = document.createElement('div');
+            row.className = 'image-link-row';
+            row.innerHTML = `
+              <input type="url" placeholder="Paste an image URL" value="${url}" />
+              <button class="remove-link-btn" onclick="removeLinkRow(this)" title="Remove">×</button>
+            `;
+            list.appendChild(row);
+          });
+          buildGallery(saved);
+        }
+      } catch(e) { /* ignore corrupt data */ }
+    }
+
+    // ─── Contact Form ────────────────────────────────────────────────────
 
     // Form submission action
     function handleFormSubmit(event) {
