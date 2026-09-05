@@ -362,7 +362,7 @@
       opacity: 0.9;
     }
 
-    /* Page 6: Deliverables */
+    /* Page 6: Deliverables — restructured */
     .deliverables-subtitle {
       font-size: 0.95rem;
       color: #777;
@@ -380,35 +380,50 @@
       gap: 1rem;
     }
 
-    .deliverables-title-block h1 {
-      margin-bottom: 0.3rem;
+    .deliverables-title-block h1 { margin-bottom: 0.3rem; }
+
+    /* Category tab strip */
+    .del-tab-strip {
+      display: flex;
+      gap: 0;
+      border-bottom: 2px solid #E5E0D8;
+      margin-bottom: 1.8rem;
     }
 
-    .deliverables-ready-badge {
-      text-align: right;
-    }
-
-    .deliverables-ready-badge .ready-count {
-      font-size: 1.8rem;
+    .del-tab {
+      padding: 0.7rem 1.6rem;
+      font-size: 0.8rem;
       font-weight: 700;
-      color: var(--maroon-text);
-      line-height: 1;
-    }
-
-    .deliverables-ready-badge .ready-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
       text-transform: uppercase;
+      cursor: pointer;
       color: #999;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      transition: color 0.2s, border-color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      user-select: none;
     }
 
-    /* Event accordion */
+    .del-tab:hover { color: var(--maroon-text); }
+
+    .del-tab.active {
+      color: var(--maroon-text);
+      border-bottom: 2px solid var(--maroon-text);
+    }
+
+    /* Category panel */
+    .del-panel { display: none; }
+    .del-panel.active { display: block; }
+
+    /* Event accordion inside panels */
     .event-block {
       background: var(--white);
       border: 1px solid #E5E0D8;
       border-radius: 6px;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
       overflow: hidden;
       box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
@@ -417,149 +432,236 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.1rem 1.5rem;
+      padding: 1rem 1.4rem;
       cursor: pointer;
       user-select: none;
       transition: background 0.2s;
     }
 
-    .event-header:hover {
-      background: #FAF5F0;
-    }
+    .event-header:hover { background: #FAF5F0; }
 
     .event-header-left {
       display: flex;
       align-items: center;
-      gap: 0.9rem;
+      gap: 0.8rem;
     }
 
     .event-icon {
-      font-size: 1.2rem;
-      width: 36px;
-      height: 36px;
+      font-size: 1.1rem;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
       background: var(--cream-bg);
       border: 1px solid #E0D8CC;
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
     }
 
     .event-name {
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 700;
       color: var(--text-dark);
-      letter-spacing: 0.5px;
     }
 
     .event-chevron {
-      font-size: 0.8rem;
-      color: #AAA;
+      font-size: 0.75rem;
+      color: #BBB;
       transition: transform 0.3s ease;
     }
 
-    .event-block.open .event-chevron {
-      transform: rotate(180deg);
-    }
+    .event-block.open .event-chevron { transform: rotate(180deg); }
 
     .event-body {
       display: none;
-      padding: 0 1.5rem 1.5rem;
+      padding: 0 1.4rem 1.2rem;
       border-top: 1px solid #F0EBE3;
     }
 
-    .event-block.open .event-body {
-      display: block;
-    }
+    .event-block.open .event-body { display: block; }
 
-    /* Deliverable item rows */
-    .deliverable-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 0;
-      border-bottom: 1px solid #F5F0EA;
-    }
-
-    .deliverable-item:last-child {
-      border-bottom: none;
-    }
-
-    .deliverable-left {
-      display: flex;
-      align-items: center;
-      gap: 0.9rem;
-    }
-
-    .deliverable-icon {
-      font-size: 1rem;
-      color: #888;
-      width: 28px;
-      text-align: center;
-    }
-
-    .deliverable-info h4 {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 0.35rem;
-    }
-
-    .tag-list {
-      display: flex;
-      gap: 0.4rem;
-      flex-wrap: wrap;
-    }
+    /* Tags */
+    .tag-list { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.5rem; }
 
     .tag {
       font-size: 0.72rem;
       font-weight: 600;
-      padding: 0.2rem 0.6rem;
+      padding: 0.2rem 0.55rem;
       border-radius: 4px;
       border: 1px solid;
     }
 
-    .tag-green {
-      background: #EDFAF3;
+    .tag-green  { background:#EDFAF3; color:#1A7A47; border-color:#B2DFC8; }
+    .tag-grey   { background:#F2F2F2; color:#777;    border-color:#DDD; }
+
+    /* ── Catering: checklist ── */
+    .menu-section-title {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
       color: #1A7A47;
-      border-color: #B2DFC8;
+      margin: 1rem 0 0.5rem;
     }
 
-    .tag-grey {
-      background: #F2F2F2;
-      color: #777;
-      border-color: #DDD;
-    }
-
-    .tag-blue {
-      background: #EEF3FD;
-      color: #2A5BA8;
-      border-color: #BDD0F0;
-    }
-
-    .status-badge {
+    .menu-item-row {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: #999;
-      background: #F5F5F5;
-      border: 1px solid #E5E5E5;
-      border-radius: 20px;
-      padding: 0.3rem 0.8rem;
-      white-space: nowrap;
+      gap: 0.7rem;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid #F8F5F0;
+      font-size: 0.88rem;
+      color: var(--text-dark);
     }
 
-    .status-dot {
-      width: 7px;
-      height: 7px;
+    .menu-item-row.checked {
+      color: #AAA;
+      text-decoration: line-through;
+    }
+
+    .menu-checkbox {
+      width: 18px;
+      height: 18px;
+      border: 2px solid #CCC;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.2s;
+    }
+
+    .menu-item-row.checked .menu-checkbox {
+      background: #1A7A47;
+      border-color: #1A7A47;
+      color: white;
+      font-size: 0.7rem;
+    }
+
+    .menu-item-label { flex: 1; cursor: pointer; }
+
+    .menu-item-remove {
+      background: none;
+      border: none;
+      color: #CCC;
+      cursor: pointer;
+      font-size: 1rem;
+      line-height: 1;
+      padding: 0 0.2rem;
+      transition: color 0.2s;
+    }
+
+    .menu-item-remove:hover { color: var(--maroon-text); }
+
+    .add-menu-item-row {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.8rem;
+    }
+
+    .add-menu-item-row input {
+      flex: 1;
+      padding: 0.45rem 0.7rem;
+      border: 1px dashed #CCC;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      background: #FAFAFA;
+      border-radius: 4px;
+    }
+
+    .add-menu-item-row input:focus {
+      outline: none;
+      border-color: #1A7A47;
+    }
+
+    .add-menu-item-btn {
+      padding: 0.45rem 0.9rem;
+      background: #1A7A47;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .add-menu-item-btn:hover { opacity: 0.85; }
+
+    /* ── Photo upload zone ── */
+    .upload-zone {
+      margin-top: 0.8rem;
+      border: 2px dashed #D5CFC7;
+      border-radius: 6px;
+      padding: 1rem;
+      background: #FDFBF8;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .upload-zone:hover { border-color: var(--maroon-text); }
+
+    .upload-zone-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.35rem;
+      color: #AAA;
+      font-size: 0.8rem;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .upload-zone-label span.upload-icon { font-size: 1.5rem; }
+    .upload-zone-label strong { color: var(--maroon-text); font-size: 0.82rem; }
+
+    .upload-previews {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.7rem;
+    }
+
+    .upload-thumb {
+      position: relative;
+      width: 72px;
+      height: 72px;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid #DDD;
+    }
+
+    .upload-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .upload-thumb-remove {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      background: rgba(128,0,16,0.8);
+      color: white;
+      border: none;
       border-radius: 50%;
-      background: #AAAAAA;
+      width: 18px;
+      height: 18px;
+      font-size: 0.6rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .status-dot.queued { background: #AAAAAA; }
-    .status-dot.done   { background: #2ECC71; }
+    .upload-count-note {
+      font-size: 0.72rem;
+      color: #AAA;
+      margin-top: 0.4rem;
+    }
 
     /* Mobile Responsive Styles */
     @media (max-width: 900px) {
@@ -819,283 +921,396 @@
         <div class="deliverables-header-row">
           <div class="deliverables-title-block">
             <h1 class="slide-title" style="margin-bottom:0.3rem;">Deliverables</h1>
-            <p class="deliverables-subtitle">What you'll receive for each event</p>
-          </div>
-          <div class="deliverables-ready-badge">
-            <div class="ready-count">0/5</div>
-            <div class="ready-label">Ready</div>
+            <p class="deliverables-subtitle">Track what's promised for each event</p>
           </div>
         </div>
 
-        <!-- ENGAGEMENT -->
-        <div class="event-block open">
-          <div class="event-header" onclick="toggleEvent(this)">
-            <div class="event-header-left">
-              <div class="event-icon">💍</div>
-              <span class="event-name">Engagement</span>
-            </div>
-            <span class="event-chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="deliverable-item">
-              <div class="deliverable-left">
-                <div class="deliverable-icon">📷</div>
-                <div class="deliverable-info">
-                  <h4>Photography</h4>
-                  <div class="tag-list">
-                    <span class="tag tag-green">Candid</span>
-                    <span class="tag tag-green">Traditional</span>
-                    <span class="tag tag-green">Edited</span>
-                  </div>
-                </div>
-              </div>
-              <div class="status-badge"><span class="status-dot queued"></span> Queued</div>
-            </div>
-            <div class="deliverable-item">
-              <div class="deliverable-left">
-                <div class="deliverable-icon">🌸</div>
-                <div class="deliverable-info">
-                  <h4>Decoration</h4>
-                  <div class="tag-list">
-                    <span class="tag tag-green">Floral</span>
-                    <span class="tag tag-green">Stage Setup</span>
-                    <span class="tag tag-green">Lighting</span>
-                  </div>
-                </div>
-              </div>
-              <div class="status-badge"><span class="status-dot queued"></span> Queued</div>
-            </div>
-            <div class="deliverable-item">
-              <div class="deliverable-left">
-                <div class="deliverable-icon">🍽️</div>
-                <div class="deliverable-info">
-                  <h4>Caterers</h4>
-                  <div class="tag-list">
-                    <span class="tag tag-green">Buffet</span>
-                    <span class="tag tag-green">Welcome Drinks</span>
-                    <span class="tag tag-green">Desserts</span>
-                  </div>
-                </div>
-              </div>
-              <div class="status-badge"><span class="status-dot queued"></span> Queued</div>
-            </div>
-          </div>
+        <!-- Category Tab Strip -->
+        <div class="del-tab-strip">
+          <div class="del-tab active" onclick="switchDelTab('photography')">📷 Photography</div>
+          <div class="del-tab" onclick="switchDelTab('decoration')">🌸 Decoration</div>
+          <div class="del-tab" onclick="switchDelTab('catering')">🍽️ Catering</div>
         </div>
 
-        <!-- BARAAT -->
-        <div class="event-block">
-          <div class="event-header" onclick="toggleEvent(this)">
-            <div class="event-header-left">
-              <div class="event-icon">🐴</div>
-              <span class="event-name">Baraat</span>
-            </div>
-            <span class="event-chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="deliverable-item">
-              <div class="deliverable-left">
-                <div class="deliverable-icon">🐎</div>
-                <div class="deliverable-info">
-                  <h4>Horse</h4>
-                  <div class="tag-list">
-                    <span class="tag tag-green">Decorated</span>
-                    <span class="tag tag-green">With Handler</span>
-                  </div>
-                </div>
-              </div>
-              <div class="status-badge"><span class="status-dot queued"></span> Queued</div>
-            </div>
-            <div class="deliverable-item">
-              <div class="deliverable-left">
-                <div class="deliverable-icon">🥁</div>
-                <div class="deliverable-info">
-                  <h4>Band for Music</h4>
-                  <div class="tag-list">
-                    <span class="tag tag-green">Dhol</span>
-                    <span class="tag tag-green">Brass Band</span>
-                    <span class="tag tag-green">Shehnai</span>
-                  </div>
-                </div>
-              </div>
-              <div class="status-badge"><span class="status-dot queued"></span> Queued</div>
-            </div>
-            <div class="deliverable-item">
-              <div class="deliverable-left">
-                <div class="deliverable-icon">🔊</div>
-                <div class="deliverable-info">
-                  <h4>Speakers</h4>
-                  <div class="tag-list">
-                    <span class="tag tag-green">DJ Setup</span>
-                    <span class="tag tag-green">PA System</span>
-                  </div>
-                </div>
-              </div>
-              <div class="status-badge"><span class="status-dot queued"></span> Queued</div>
-            </div>
-          </div>
-        </div>
+        <!-- ═══ PHOTOGRAPHY PANEL ═══ -->
+        <div class="del-panel active" id="del-photography">
 
-        <!-- SANGEET -->
-        <div class="event-block">
-          <div class="event-header" onclick="toggleEvent(this)">
-            <div class="event-header-left">
-              <div class="event-icon">🎶</div>
-              <span class="event-name">Sangeet</span>
-            </div>
-            <span class="event-chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="deliverable-item">
-              <div class="deliverable-left">
-                <div class="deliverable-icon">📷</div>
-                <div class="deliverable-info">
-                  <h4>Photography</h4>
-                  <div class="tag-list">
-                    <span class="tag tag-green">Candid</span>
-                    <span class="tag tag-green">Edited</span>
-                  </div>
-                </div>
+          <!-- Engagement -->
+          <div class="event-block open">
+            <div class="event-header" onclick="toggleEvent(this)">
+              <div class="event-header-left">
+                <div class="event-icon">💍</div>
+                <span class="event-name">Engagement</span>
               </div>
-              <div class="status-badge"><span class="status-dot queued"></span> Queued</div>
+              <span class="event-chevron">▼</span>
             </div>
-            <div class="deliverable-item">
-              <div class="deliverable-left">
-                <div class="deliverable-icon">🌸</div>
-                <div class="deliverable-info">
-                  <h4>Decoration</h4>
-                  <div class="tag-list">
-                    <span class="tag tag-green">Stage</span>
-                    <span class="tag tag-green">Floral</span>
-                    <span class="tag tag-green">Lighting</span>
-                  </div>
-                </div>
+            <div class="event-body">
+              <div class="tag-list">
+                <span class="tag tag-green">Candid</span>
+                <span class="tag tag-green">Traditional</span>
+                <span class="tag tag-green">Edited</span>
               </div>
-              <div class="status-badge"><span class="status-dot queued"></span> Queued</div>
-            </div>
-            <div class="deliverable-item">
-              <div class="deliverable-left">
-                <div class="deliverable-icon">🍽️</div>
-                <div class="deliverable-info">
-                  <h4>Caterers</h4>
-                  <div class="tag-list">
-                    <span class="tag tag-green">Buffet</span>
-                    <span class="tag tag-green">Snacks</span>
-                  </div>
-                </div>
+              <div class="upload-zone" onclick="triggerUpload('eng-photo')">
+                <label class="upload-zone-label" for="eng-photo">
+                  <span class="upload-icon">📁</span>
+                  <strong>Click to upload photos</strong>
+                  <span>Max 5 photos · JPG, PNG</span>
+                </label>
               </div>
-              <div class="status-badge"><span class="status-dot queued"></span> Queued</div>
+              <input type="file" id="eng-photo" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'eng-photo-previews')">
+              <div class="upload-previews" id="eng-photo-previews"></div>
+              <div class="upload-count-note" id="eng-photo-note"></div>
             </div>
           </div>
-        </div>
 
-        <!-- MUHURTA -->
-        <div class="event-block">
-          <div class="event-header" onclick="toggleEvent(this)">
-            <div class="event-header-left">
-              <div class="event-icon">🪔</div>
-              <span class="event-name">Muhurta</span>
-            </div>
-            <span class="event-chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="deliverable-item">
-              <div class="deliverable-left">
-                <div class="deliverable-icon">🪔</div>
-                <div class="deliverable-info">
-                  <h4>Pooja Traditional Items</h4>
-                  <div class="tag-list">
-                    <span class="tag tag-green">Havan Samagri</span>
-                    <span class="tag tag-green">Flowers</span>
-                    <span class="tag tag-green">Kalash</span>
-                    <span class="tag tag-green">Sacred Items</span>
-                  </div>
-                </div>
+          <!-- Baraat — no photography -->
+          <div class="event-block">
+            <div class="event-header" onclick="toggleEvent(this)">
+              <div class="event-header-left">
+                <div class="event-icon">🐴</div>
+                <span class="event-name">Baraat</span>
               </div>
-              <div class="status-badge"><span class="status-dot queued"></span> Queued</div>
+              <span class="event-chevron">▼</span>
             </div>
-            <div class="deliverable-item">
-              <div class="deliverable-left">
-                <div class="deliverable-icon">📷</div>
-                <div class="deliverable-info">
-                  <h4>Photography</h4>
-                  <div class="tag-list">
-                    <span class="tag tag-green">Ritual Coverage</span>
-                    <span class="tag tag-green">Edited</span>
-                  </div>
-                </div>
+            <div class="event-body">
+              <div class="tag-list">
+                <span class="tag tag-green">Candid</span>
+                <span class="tag tag-green">Procession Coverage</span>
               </div>
-              <div class="status-badge"><span class="status-dot queued"></span> Queued</div>
-            </div>
-            <div class="deliverable-item">
-              <div class="deliverable-left">
-                <div class="deliverable-icon">🙏</div>
-                <div class="deliverable-info">
-                  <h4>Poojari</h4>
-                  <div class="tag-list">
-                    <span class="tag tag-green">Vedic Pandit</span>
-                    <span class="tag tag-green">Ritual Guidance</span>
-                  </div>
-                </div>
+              <div class="upload-zone" onclick="triggerUpload('bar-photo')">
+                <label class="upload-zone-label" for="bar-photo">
+                  <span class="upload-icon">📁</span>
+                  <strong>Click to upload photos</strong>
+                  <span>Max 5 photos · JPG, PNG</span>
+                </label>
               </div>
-              <div class="status-badge"><span class="status-dot queued"></span> Queued</div>
+              <input type="file" id="bar-photo" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'bar-photo-previews')">
+              <div class="upload-previews" id="bar-photo-previews"></div>
+              <div class="upload-count-note" id="bar-photo-note"></div>
             </div>
           </div>
-        </div>
 
-        <!-- RECEPTION -->
-        <div class="event-block">
-          <div class="event-header" onclick="toggleEvent(this)">
-            <div class="event-header-left">
-              <div class="event-icon">🥂</div>
-              <span class="event-name">Reception</span>
-            </div>
-            <span class="event-chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="deliverable-item">
-              <div class="deliverable-left">
-                <div class="deliverable-icon">📷</div>
-                <div class="deliverable-info">
-                  <h4>Photography</h4>
-                  <div class="tag-list">
-                    <span class="tag tag-green">Candid</span>
-                    <span class="tag tag-green">Traditional</span>
-                    <span class="tag tag-green">Edited</span>
-                  </div>
-                </div>
+          <!-- Sangeet -->
+          <div class="event-block">
+            <div class="event-header" onclick="toggleEvent(this)">
+              <div class="event-header-left">
+                <div class="event-icon">🎶</div>
+                <span class="event-name">Sangeet</span>
               </div>
-              <div class="status-badge"><span class="status-dot queued"></span> Queued</div>
+              <span class="event-chevron">▼</span>
             </div>
-            <div class="deliverable-item">
-              <div class="deliverable-left">
-                <div class="deliverable-icon">🌸</div>
-                <div class="deliverable-info">
-                  <h4>Decoration</h4>
-                  <div class="tag-list">
-                    <span class="tag tag-green">Floral</span>
-                    <span class="tag tag-green">Stage Setup</span>
-                    <span class="tag tag-green">Lighting</span>
-                  </div>
-                </div>
+            <div class="event-body">
+              <div class="tag-list">
+                <span class="tag tag-green">Candid</span>
+                <span class="tag tag-green">Edited</span>
               </div>
-              <div class="status-badge"><span class="status-dot queued"></span> Queued</div>
-            </div>
-            <div class="deliverable-item">
-              <div class="deliverable-left">
-                <div class="deliverable-icon">🍽️</div>
-                <div class="deliverable-info">
-                  <h4>Caterers</h4>
-                  <div class="tag-list">
-                    <span class="tag tag-green">Buffet</span>
-                    <span class="tag tag-green">Welcome Drinks</span>
-                    <span class="tag tag-green">Desserts</span>
-                  </div>
-                </div>
+              <div class="upload-zone" onclick="triggerUpload('san-photo')">
+                <label class="upload-zone-label" for="san-photo">
+                  <span class="upload-icon">📁</span>
+                  <strong>Click to upload photos</strong>
+                  <span>Max 5 photos · JPG, PNG</span>
+                </label>
               </div>
-              <div class="status-badge"><span class="status-dot queued"></span> Queued</div>
+              <input type="file" id="san-photo" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'san-photo-previews')">
+              <div class="upload-previews" id="san-photo-previews"></div>
+              <div class="upload-count-note" id="san-photo-note"></div>
             </div>
           </div>
-        </div>
+
+          <!-- Muhurta -->
+          <div class="event-block">
+            <div class="event-header" onclick="toggleEvent(this)">
+              <div class="event-header-left">
+                <div class="event-icon">🪔</div>
+                <span class="event-name">Muhurta</span>
+              </div>
+              <span class="event-chevron">▼</span>
+            </div>
+            <div class="event-body">
+              <div class="tag-list">
+                <span class="tag tag-green">Ritual Coverage</span>
+                <span class="tag tag-green">Edited</span>
+              </div>
+              <div class="upload-zone" onclick="triggerUpload('muh-photo')">
+                <label class="upload-zone-label" for="muh-photo">
+                  <span class="upload-icon">📁</span>
+                  <strong>Click to upload photos</strong>
+                  <span>Max 5 photos · JPG, PNG</span>
+                </label>
+              </div>
+              <input type="file" id="muh-photo" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'muh-photo-previews')">
+              <div class="upload-previews" id="muh-photo-previews"></div>
+              <div class="upload-count-note" id="muh-photo-note"></div>
+            </div>
+          </div>
+
+          <!-- Reception -->
+          <div class="event-block">
+            <div class="event-header" onclick="toggleEvent(this)">
+              <div class="event-header-left">
+                <div class="event-icon">🥂</div>
+                <span class="event-name">Reception</span>
+              </div>
+              <span class="event-chevron">▼</span>
+            </div>
+            <div class="event-body">
+              <div class="tag-list">
+                <span class="tag tag-green">Candid</span>
+                <span class="tag tag-green">Traditional</span>
+                <span class="tag tag-green">Edited</span>
+              </div>
+              <div class="upload-zone" onclick="triggerUpload('rec-photo')">
+                <label class="upload-zone-label" for="rec-photo">
+                  <span class="upload-icon">📁</span>
+                  <strong>Click to upload photos</strong>
+                  <span>Max 5 photos · JPG, PNG</span>
+                </label>
+              </div>
+              <input type="file" id="rec-photo" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'rec-photo-previews')">
+              <div class="upload-previews" id="rec-photo-previews"></div>
+              <div class="upload-count-note" id="rec-photo-note"></div>
+            </div>
+          </div>
+
+        </div><!-- /photography panel -->
+
+        <!-- ═══ DECORATION PANEL ═══ -->
+        <div class="del-panel" id="del-decoration">
+
+          <!-- Engagement -->
+          <div class="event-block open">
+            <div class="event-header" onclick="toggleEvent(this)">
+              <div class="event-header-left"><div class="event-icon">💍</div><span class="event-name">Engagement</span></div>
+              <span class="event-chevron">▼</span>
+            </div>
+            <div class="event-body">
+              <div class="tag-list">
+                <span class="tag tag-green">Floral</span>
+                <span class="tag tag-green">Stage Setup</span>
+                <span class="tag tag-green">Lighting</span>
+              </div>
+              <div class="upload-zone" onclick="triggerUpload('eng-dec')">
+                <label class="upload-zone-label" for="eng-dec">
+                  <span class="upload-icon">📁</span>
+                  <strong>Upload decoration references</strong>
+                  <span>Max 5 photos · JPG, PNG</span>
+                </label>
+              </div>
+              <input type="file" id="eng-dec" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'eng-dec-previews')">
+              <div class="upload-previews" id="eng-dec-previews"></div>
+              <div class="upload-count-note" id="eng-dec-note"></div>
+            </div>
+          </div>
+
+          <!-- Baraat -->
+          <div class="event-block">
+            <div class="event-header" onclick="toggleEvent(this)">
+              <div class="event-header-left"><div class="event-icon">🐴</div><span class="event-name">Baraat</span></div>
+              <span class="event-chevron">▼</span>
+            </div>
+            <div class="event-body">
+              <div class="tag-list">
+                <span class="tag tag-green">Decorated Horse</span>
+                <span class="tag tag-green">Floral Arch</span>
+              </div>
+              <div class="upload-zone" onclick="triggerUpload('bar-dec')">
+                <label class="upload-zone-label" for="bar-dec">
+                  <span class="upload-icon">📁</span>
+                  <strong>Upload decoration references</strong>
+                  <span>Max 5 photos · JPG, PNG</span>
+                </label>
+              </div>
+              <input type="file" id="bar-dec" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'bar-dec-previews')">
+              <div class="upload-previews" id="bar-dec-previews"></div>
+              <div class="upload-count-note" id="bar-dec-note"></div>
+            </div>
+          </div>
+
+          <!-- Sangeet -->
+          <div class="event-block">
+            <div class="event-header" onclick="toggleEvent(this)">
+              <div class="event-header-left"><div class="event-icon">🎶</div><span class="event-name">Sangeet</span></div>
+              <span class="event-chevron">▼</span>
+            </div>
+            <div class="event-body">
+              <div class="tag-list">
+                <span class="tag tag-green">Stage</span>
+                <span class="tag tag-green">Floral</span>
+                <span class="tag tag-green">Lighting</span>
+              </div>
+              <div class="upload-zone" onclick="triggerUpload('san-dec')">
+                <label class="upload-zone-label" for="san-dec">
+                  <span class="upload-icon">📁</span>
+                  <strong>Upload decoration references</strong>
+                  <span>Max 5 photos · JPG, PNG</span>
+                </label>
+              </div>
+              <input type="file" id="san-dec" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'san-dec-previews')">
+              <div class="upload-previews" id="san-dec-previews"></div>
+              <div class="upload-count-note" id="san-dec-note"></div>
+            </div>
+          </div>
+
+          <!-- Muhurta -->
+          <div class="event-block">
+            <div class="event-header" onclick="toggleEvent(this)">
+              <div class="event-header-left"><div class="event-icon">🪔</div><span class="event-name">Muhurta</span></div>
+              <span class="event-chevron">▼</span>
+            </div>
+            <div class="event-body">
+              <div class="tag-list">
+                <span class="tag tag-green">Mandap</span>
+                <span class="tag tag-green">Pooja Setup</span>
+                <span class="tag tag-green">Floral</span>
+              </div>
+              <div class="upload-zone" onclick="triggerUpload('muh-dec')">
+                <label class="upload-zone-label" for="muh-dec">
+                  <span class="upload-icon">📁</span>
+                  <strong>Upload decoration references</strong>
+                  <span>Max 5 photos · JPG, PNG</span>
+                </label>
+              </div>
+              <input type="file" id="muh-dec" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'muh-dec-previews')">
+              <div class="upload-previews" id="muh-dec-previews"></div>
+              <div class="upload-count-note" id="muh-dec-note"></div>
+            </div>
+          </div>
+
+          <!-- Reception -->
+          <div class="event-block">
+            <div class="event-header" onclick="toggleEvent(this)">
+              <div class="event-header-left"><div class="event-icon">🥂</div><span class="event-name">Reception</span></div>
+              <span class="event-chevron">▼</span>
+            </div>
+            <div class="event-body">
+              <div class="tag-list">
+                <span class="tag tag-green">Floral</span>
+                <span class="tag tag-green">Stage Setup</span>
+                <span class="tag tag-green">Lighting</span>
+              </div>
+              <div class="upload-zone" onclick="triggerUpload('rec-dec')">
+                <label class="upload-zone-label" for="rec-dec">
+                  <span class="upload-icon">📁</span>
+                  <strong>Upload decoration references</strong>
+                  <span>Max 5 photos · JPG, PNG</span>
+                </label>
+              </div>
+              <input type="file" id="rec-dec" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'rec-dec-previews')">
+              <div class="upload-previews" id="rec-dec-previews"></div>
+              <div class="upload-count-note" id="rec-dec-note"></div>
+            </div>
+          </div>
+
+        </div><!-- /decoration panel -->
+
+        <!-- ═══ CATERING PANEL ═══ -->
+        <div class="del-panel" id="del-catering">
+
+          <!-- Engagement -->
+          <div class="event-block open">
+            <div class="event-header" onclick="toggleEvent(this)">
+              <div class="event-header-left"><div class="event-icon">💍</div><span class="event-name">Engagement</span></div>
+              <span class="event-chevron">▼</span>
+            </div>
+            <div class="event-body">
+              <div class="menu-section-title">STARTERS & MAINS</div>
+              <div id="eng-cat-list">
+                <div class="menu-item-row" onclick="toggleMenuItem(this)"><div class="menu-checkbox"></div><span class="menu-item-label">Pani Puri Station</span><button class="menu-item-remove" onclick="removeMenuItem(event,this)">×</button></div>
+                <div class="menu-item-row" onclick="toggleMenuItem(this)"><div class="menu-checkbox"></div><span class="menu-item-label">Samosa</span><button class="menu-item-remove" onclick="removeMenuItem(event,this)">×</button></div>
+                <div class="menu-item-row" onclick="toggleMenuItem(this)"><div class="menu-checkbox"></div><span class="menu-item-label">Dal Makhani</span><button class="menu-item-remove" onclick="removeMenuItem(event,this)">×</button></div>
+                <div class="menu-item-row" onclick="toggleMenuItem(this)"><div class="menu-checkbox"></div><span class="menu-item-label">Jeera Rice</span><button class="menu-item-remove" onclick="removeMenuItem(event,this)">×</button></div>
+                <div class="menu-item-row" onclick="toggleMenuItem(this)"><div class="menu-checkbox"></div><span class="menu-item-label">Gulab Jamun</span><button class="menu-item-remove" onclick="removeMenuItem(event,this)">×</button></div>
+              </div>
+              <div class="add-menu-item-row">
+                <input type="text" placeholder="Add menu item..." id="eng-cat-input">
+                <button class="add-menu-item-btn" onclick="addMenuItem('eng-cat-list','eng-cat-input')">+ Add</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Baraat -->
+          <div class="event-block">
+            <div class="event-header" onclick="toggleEvent(this)">
+              <div class="event-header-left"><div class="event-icon">🐴</div><span class="event-name">Baraat</span></div>
+              <span class="event-chevron">▼</span>
+            </div>
+            <div class="event-body">
+              <div class="menu-section-title">REFRESHMENTS</div>
+              <div id="bar-cat-list">
+                <div class="menu-item-row" onclick="toggleMenuItem(this)"><div class="menu-checkbox"></div><span class="menu-item-label">Sherbat / Welcome Drink</span><button class="menu-item-remove" onclick="removeMenuItem(event,this)">×</button></div>
+                <div class="menu-item-row" onclick="toggleMenuItem(this)"><div class="menu-checkbox"></div><span class="menu-item-label">Dry Snacks</span><button class="menu-item-remove" onclick="removeMenuItem(event,this)">×</button></div>
+              </div>
+              <div class="add-menu-item-row">
+                <input type="text" placeholder="Add menu item..." id="bar-cat-input">
+                <button class="add-menu-item-btn" onclick="addMenuItem('bar-cat-list','bar-cat-input')">+ Add</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sangeet -->
+          <div class="event-block">
+            <div class="event-header" onclick="toggleEvent(this)">
+              <div class="event-header-left"><div class="event-icon">🎶</div><span class="event-name">Sangeet</span></div>
+              <span class="event-chevron">▼</span>
+            </div>
+            <div class="event-body">
+              <div class="menu-section-title">BUFFET</div>
+              <div id="san-cat-list">
+                <div class="menu-item-row" onclick="toggleMenuItem(this)"><div class="menu-checkbox"></div><span class="menu-item-label">Chaat Counter</span><button class="menu-item-remove" onclick="removeMenuItem(event,this)">×</button></div>
+                <div class="menu-item-row" onclick="toggleMenuItem(this)"><div class="menu-checkbox"></div><span class="menu-item-label">Paneer Tikka</span><button class="menu-item-remove" onclick="removeMenuItem(event,this)">×</button></div>
+                <div class="menu-item-row" onclick="toggleMenuItem(this)"><div class="menu-checkbox"></div><span class="menu-item-label">Biryani</span><button class="menu-item-remove" onclick="removeMenuItem(event,this)">×</button></div>
+                <div class="menu-item-row" onclick="toggleMenuItem(this)"><div class="menu-checkbox"></div><span class="menu-item-label">Ice Cream Bar</span><button class="menu-item-remove" onclick="removeMenuItem(event,this)">×</button></div>
+              </div>
+              <div class="add-menu-item-row">
+                <input type="text" placeholder="Add menu item..." id="san-cat-input">
+                <button class="add-menu-item-btn" onclick="addMenuItem('san-cat-list','san-cat-input')">+ Add</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Muhurta -->
+          <div class="event-block">
+            <div class="event-header" onclick="toggleEvent(this)">
+              <div class="event-header-left"><div class="event-icon">🪔</div><span class="event-name">Muhurta</span></div>
+              <span class="event-chevron">▼</span>
+            </div>
+            <div class="event-body">
+              <div class="menu-section-title">PRASAD & SNACKS</div>
+              <div id="muh-cat-list">
+                <div class="menu-item-row" onclick="toggleMenuItem(this)"><div class="menu-checkbox"></div><span class="menu-item-label">Prasad Thali</span><button class="menu-item-remove" onclick="removeMenuItem(event,this)">×</button></div>
+                <div class="menu-item-row" onclick="toggleMenuItem(this)"><div class="menu-checkbox"></div><span class="menu-item-label">Poha</span><button class="menu-item-remove" onclick="removeMenuItem(event,this)">×</button></div>
+                <div class="menu-item-row" onclick="toggleMenuItem(this)"><div class="menu-checkbox"></div><span class="menu-item-label">Shrikhand Puri</span><button class="menu-item-remove" onclick="removeMenuItem(event,this)">×</button></div>
+              </div>
+              <div class="add-menu-item-row">
+                <input type="text" placeholder="Add menu item..." id="muh-cat-input">
+                <button class="add-menu-item-btn" onclick="addMenuItem('muh-cat-list','muh-cat-input')">+ Add</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reception -->
+          <div class="event-block">
+            <div class="event-header" onclick="toggleEvent(this)">
+              <div class="event-header-left"><div class="event-icon">🥂</div><span class="event-name">Reception</span></div>
+              <span class="event-chevron">▼</span>
+            </div>
+            <div class="event-body">
+              <div class="menu-section-title">GRAND BUFFET</div>
+              <div id="rec-cat-list">
+                <div class="menu-item-row" onclick="toggleMenuItem(this)"><div class="menu-checkbox"></div><span class="menu-item-label">Welcome Mocktails</span><button class="menu-item-remove" onclick="removeMenuItem(event,this)">×</button></div>
+                <div class="menu-item-row" onclick="toggleMenuItem(this)"><div class="menu-checkbox"></div><span class="menu-item-label">Starter Platters</span><button class="menu-item-remove" onclick="removeMenuItem(event,this)">×</button></div>
+                <div class="menu-item-row" onclick="toggleMenuItem(this)"><div class="menu-checkbox"></div><span class="menu-item-label">Main Course Buffet</span><button class="menu-item-remove" onclick="removeMenuItem(event,this)">×</button></div>
+                <div class="menu-item-row" onclick="toggleMenuItem(this)"><div class="menu-checkbox"></div><span class="menu-item-label">Dessert Counter</span><button class="menu-item-remove" onclick="removeMenuItem(event,this)">×</button></div>
+                <div class="menu-item-row" onclick="toggleMenuItem(this)"><div class="menu-checkbox"></div><span class="menu-item-label">Wedding Cake</span><button class="menu-item-remove" onclick="removeMenuItem(event,this)">×</button></div>
+              </div>
+              <div class="add-menu-item-row">
+                <input type="text" placeholder="Add menu item..." id="rec-cat-input">
+                <button class="add-menu-item-btn" onclick="addMenuItem('rec-cat-list','rec-cat-input')">+ Add</button>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /catering panel -->
 
       </div>
     </section>
@@ -1136,12 +1351,126 @@
       }
     });
 
-    // ─── Deliverables Accordion ──────────────────────────────────────────
+    // ─── Deliverables: Tab switching ────────────────────────────────────
+
+    function switchDelTab(tabId) {
+      document.querySelectorAll('.del-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.del-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById('del-' + tabId).classList.add('active');
+      // Highlight correct tab button
+      document.querySelectorAll('.del-tab').forEach(t => {
+        if (t.getAttribute('onclick').includes(tabId)) t.classList.add('active');
+      });
+    }
+
+    // ─── Deliverables: Accordion ─────────────────────────────────────────
 
     function toggleEvent(header) {
-      const block = header.closest('.event-block');
-      block.classList.toggle('open');
+      header.closest('.event-block').classList.toggle('open');
     }
+
+    // ─── Deliverables: Photo upload (max 5) ─────────────────────────────
+
+    // Track file lists per input id
+    const uploadedFiles = {};
+
+    function triggerUpload(inputId) {
+      document.getElementById(inputId).click();
+    }
+
+    function handleUpload(input, previewId) {
+      const id = input.id;
+      if (!uploadedFiles[id]) uploadedFiles[id] = [];
+
+      const existing = uploadedFiles[id].length;
+      const incoming = Array.from(input.files);
+      const allowed = 5 - existing;
+
+      if (allowed <= 0) {
+        alert('Maximum 5 photos already uploaded for this event.');
+        input.value = '';
+        return;
+      }
+
+      const toAdd = incoming.slice(0, allowed);
+      if (incoming.length > allowed) {
+        alert(`Only ${allowed} more photo(s) can be added (max 5). Extra files were skipped.`);
+      }
+
+      toAdd.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = e => {
+          uploadedFiles[id].push({ name: file.name, src: e.target.result });
+          renderPreviews(id, previewId);
+        };
+        reader.readAsDataURL(file);
+      });
+
+      input.value = '';
+    }
+
+    function renderPreviews(inputId, previewId) {
+      const container = document.getElementById(previewId);
+      const noteId = previewId.replace('-previews', '-note');
+      const files = uploadedFiles[inputId] || [];
+
+      container.innerHTML = files.map((f, i) => `
+        <div class="upload-thumb">
+          <img src="${f.src}" alt="${f.name}">
+          <button class="upload-thumb-remove" onclick="removeUpload('${inputId}','${previewId}',${i})">×</button>
+        </div>
+      `).join('');
+
+      const note = document.getElementById(noteId);
+      if (note) note.textContent = files.length > 0 ? `${files.length}/5 photo${files.length !== 1 ? 's' : ''} uploaded` : '';
+    }
+
+    function removeUpload(inputId, previewId, index) {
+      uploadedFiles[inputId].splice(index, 1);
+      renderPreviews(inputId, previewId);
+    }
+
+    // ─── Deliverables: Catering menu items ──────────────────────────────
+
+    function toggleMenuItem(row) {
+      // Prevent toggling when × was clicked
+      row.classList.toggle('checked');
+      const box = row.querySelector('.menu-checkbox');
+      box.textContent = row.classList.contains('checked') ? '✓' : '';
+    }
+
+    function removeMenuItem(e, btn) {
+      e.stopPropagation();
+      btn.closest('.menu-item-row').remove();
+    }
+
+    function addMenuItem(listId, inputId) {
+      const input = document.getElementById(inputId);
+      const val = input.value.trim();
+      if (!val) return;
+
+      const list = document.getElementById(listId);
+      const row = document.createElement('div');
+      row.className = 'menu-item-row';
+      row.setAttribute('onclick', 'toggleMenuItem(this)');
+      row.innerHTML = `
+        <div class="menu-checkbox"></div>
+        <span class="menu-item-label">${val}</span>
+        <button class="menu-item-remove" onclick="removeMenuItem(event,this)">×</button>
+      `;
+      list.appendChild(row);
+      input.value = '';
+      input.focus();
+    }
+
+    // Allow Enter key to add menu item
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && e.target.matches('.add-menu-item-row input')) {
+        const inputId = e.target.id;
+        const listId = inputId.replace('-input', '-list');
+        addMenuItem(listId, inputId);
+      }
+    });
 
     // ─── Contact Form ────────────────────────────────────────────────────
 
