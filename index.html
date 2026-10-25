@@ -3,39 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shweta Patil | Sri Vivaah & Co</title>
-  
-  <!-- Fonts -->
+  <title>Shweta Patil | श्री Vivaah & Co</title>
+
+  <!-- Fonts: Libre Baskerville -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
   <style>
-    /* Exact Color Palette & Font Styles matching the Portfolio Slides */
     :root {
       --maroon-bg: #800010;
       --maroon-text: #800010;
       --cream-bg: #FAF7F2;
       --white: #FFFFFF;
       --text-dark: #2A2A2A;
-      --font-heading: 'Playfair Display', Georgia, serif;
-      --font-body: 'Montserrat', sans-serif;
+      --font: 'Libre Baskerville', Georgia, serif;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: var(--font-body);
+      font-family: var(--font);
       background-color: var(--cream-bg);
       color: var(--text-dark);
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
-    /* Fixed Top Navigation Bar */
+    /* ── NAV ── */
     header {
       position: sticky;
       top: 0;
@@ -51,34 +45,38 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
+      position: relative;
     }
 
     .brand-logo {
-      font-family: var(--font-body);
+      font-family: var(--font);
       color: var(--cream-bg);
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 700;
       letter-spacing: 2px;
       text-decoration: none;
+      flex-shrink: 0;
     }
 
     .nav-links {
       display: flex;
       list-style: none;
-      gap: 1.5rem;
+      gap: 1.2rem;
+      flex-wrap: nowrap;
     }
 
     .nav-links a {
       color: var(--cream-bg);
       text-decoration: none;
-      font-size: 0.8rem;
-      font-weight: 600;
+      font-size: 0.72rem;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
+      letter-spacing: 1.2px;
       padding: 0.5rem 0;
-      transition: opacity 0.3s ease, border-bottom 0.3s ease;
+      transition: opacity 0.3s, border-bottom 0.3s;
       border-bottom: 2px solid transparent;
-      opacity: 0.85;
+      opacity: 0.8;
+      white-space: nowrap;
     }
 
     .nav-links a:hover,
@@ -87,24 +85,106 @@
       border-bottom: 2px solid var(--cream-bg);
     }
 
-    /* Page Sections Container */
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+      z-index: 1100;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--cream-bg);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile nav drawer */
+    .mobile-nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--maroon-bg);
+      padding: 1rem 2rem 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+
+    .mobile-nav.open { display: block; }
+
+    .mobile-nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .mobile-nav ul li a {
+      display: block;
+      color: var(--cream-bg);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      opacity: 0.85;
+    }
+
+    .mobile-nav ul li a:hover,
+    .mobile-nav ul li a.active {
+      opacity: 1;
+    }
+
+    /* ── PAGES ── */
     .page-section {
       display: none;
       width: 100%;
       min-height: calc(100vh - 70px);
-      animation: fadeIn 0.4s ease-in-out;
+      animation: fadeIn 0.35s ease-in-out;
     }
 
-    .page-section.active {
-      display: block;
-    }
+    .page-section.active { display: block; }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* Reusable Portfolio Slide Container */
+    /* Empty page placeholder */
+    .empty-page {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100vh - 70px);
+      flex-direction: column;
+      gap: 1rem;
+      color: #BBB;
+    }
+
+    .empty-page-icon { font-size: 3rem; }
+    .empty-page h2 {
+      font-size: 1.5rem;
+      font-style: italic;
+      color: #CCC;
+    }
+    .empty-page p { font-size: 0.9rem; color: #BBB; }
+
+    /* ── SLIDE FRAME ── */
     .slide-frame {
       max-width: 1100px;
       margin: 3rem auto;
@@ -121,7 +201,6 @@
       border-color: var(--cream-bg);
     }
 
-    /* Top Header Bar inside Slides */
     .slide-header {
       display: flex;
       justify-content: space-between;
@@ -129,52 +208,39 @@
       border-bottom: 1px solid var(--maroon-text);
       padding-bottom: 0.8rem;
       margin-bottom: 2.5rem;
-      font-size: 0.8rem;
-      font-weight: 600;
+      font-size: 0.72rem;
+      font-weight: 700;
       letter-spacing: 2px;
       color: var(--maroon-text);
       text-transform: uppercase;
     }
 
     .slide-frame.dark-theme .slide-header {
-      border-bottom: 1px solid var(--cream-bg);
+      border-bottom-color: var(--cream-bg);
       color: var(--cream-bg);
     }
 
-    /* Page Title Headings */
     .slide-title {
-      font-family: var(--font-heading);
+      font-family: var(--font);
       font-style: italic;
-      font-size: 4rem;
-      line-height: 1.1;
+      font-size: 3.6rem;
+      line-height: 1.15;
       color: var(--maroon-text);
       margin-bottom: 1.5rem;
       font-weight: 700;
     }
 
-    .slide-frame.dark-theme .slide-title {
-      color: var(--cream-bg);
-    }
+    .slide-frame.dark-theme .slide-title { color: var(--cream-bg); }
 
-    /* Red / White Decorative Circles */
-    .dots-indicator {
-      display: flex;
-      gap: 10px;
-      margin-top: 2rem;
-    }
-
+    .dots-indicator { display: flex; gap: 10px; margin-top: 2rem; }
     .dots-indicator .dot {
-      width: 16px;
-      height: 16px;
+      width: 16px; height: 16px;
       border-radius: 50%;
       background-color: var(--maroon-text);
     }
+    .slide-frame.dark-theme .dots-indicator .dot { background-color: var(--cream-bg); }
 
-    .slide-frame.dark-theme .dots-indicator .dot {
-      background-color: var(--cream-bg);
-    }
-
-    /* Page 1: Welcome */
+    /* ── PAGE 1: HOME (was Welcome) ── */
     .welcome-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -190,13 +256,10 @@
       height: 100%;
     }
 
-    .welcome-footer {
-      margin-top: auto;
-      padding-top: 3rem;
-    }
+    .welcome-footer { margin-top: auto; padding-top: 3rem; }
 
     .welcome-footer .website-label {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       letter-spacing: 2px;
       text-transform: uppercase;
       opacity: 0.8;
@@ -205,14 +268,9 @@
     }
 
     .welcome-footer .website-url {
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 700;
       letter-spacing: 2px;
-    }
-
-    .welcome-image-container {
-      width: 100%;
-      height: 100%;
     }
 
     .welcome-image-container img {
@@ -222,7 +280,7 @@
       display: block;
     }
 
-    /* Page 2: About Me */
+    /* ── PAGE 2: ABOUT ── */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -232,10 +290,10 @@
 
     .about-text p {
       font-size: 1rem;
-      line-height: 1.7;
+      line-height: 1.8;
       color: var(--maroon-text);
       margin-bottom: 1.5rem;
-      font-weight: 500;
+      font-weight: 400;
     }
 
     .about-image img {
@@ -245,7 +303,7 @@
       display: block;
     }
 
-    /* Page 3: Design Philosophy */
+    /* ── PAGE 3: DESIGN PHILOSOPHY (→ Services placeholder for now) ── */
     .philosophy-grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -254,7 +312,7 @@
 
     .philosophy-col-1 h3,
     .philosophy-col-3 h3 {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 700;
       letter-spacing: 1px;
       margin-bottom: 0.5rem;
@@ -264,7 +322,7 @@
     .philosophy-col-1 p,
     .philosophy-col-3 p {
       font-size: 0.85rem;
-      line-height: 1.6;
+      line-height: 1.7;
       margin-bottom: 2rem;
       opacity: 0.9;
     }
@@ -282,7 +340,7 @@
       margin-bottom: 1.5rem;
     }
 
-    /* Page 4: Design Inspiration */
+    /* ── PAGE 4: DESIGN INSPIRATION (→ Gallery placeholder) ── */
     .inspiration-grid {
       display: grid;
       grid-template-columns: 280px 1fr 300px;
@@ -299,11 +357,11 @@
     .inspiration-text p {
       font-size: 1rem;
       color: var(--maroon-text);
-      line-height: 1.7;
-      font-weight: 500;
+      line-height: 1.8;
+      font-weight: 400;
     }
 
-    /* Page 5: Contact / Inquiry Form */
+    /* ── PAGE 5: CONTACT ── */
     .contact-container {
       max-width: 600px;
       margin: 0 auto;
@@ -313,14 +371,39 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.06);
     }
 
-    .form-group {
-      margin-bottom: 1.5rem;
+    .contact-channels {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
     }
+
+    .contact-chip {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1rem;
+      border: 1px solid var(--maroon-text);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--maroon-text);
+      text-decoration: none;
+      font-family: var(--font);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .contact-chip:hover {
+      background: var(--maroon-bg);
+      color: var(--cream-bg);
+    }
+
+    .form-group { margin-bottom: 1.5rem; }
 
     .form-group label {
       display: block;
       margin-bottom: 0.5rem;
-      font-size: 0.8rem;
+      font-size: 0.72rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -332,8 +415,8 @@
       width: 100%;
       padding: 0.8rem 1rem;
       border: 1px solid #CCCCCC;
-      font-family: var(--font-body);
-      font-size: 0.95rem;
+      font-family: var(--font);
+      font-size: 0.9rem;
       background-color: #FAFAFA;
     }
 
@@ -350,25 +433,23 @@
       background-color: var(--maroon-bg);
       color: var(--cream-bg);
       border: none;
-      font-size: 0.85rem;
+      font-family: var(--font);
+      font-size: 0.82rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 2px;
       cursor: pointer;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.3s;
     }
 
-    .submit-btn:hover {
-      opacity: 0.9;
-    }
+    .submit-btn:hover { opacity: 0.88; }
 
-    /* Page 6: Deliverables — restructured */
+    /* ── DELIVERABLES (hidden from nav, kept in DOM) ── */
     .deliverables-subtitle {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: #777;
       margin-top: -1rem;
       margin-bottom: 2rem;
-      font-weight: 500;
     }
 
     .deliverables-header-row {
@@ -380,9 +461,6 @@
       gap: 1rem;
     }
 
-    .deliverables-title-block h1 { margin-bottom: 0.3rem; }
-
-    /* Category tab strip */
     .del-tab-strip {
       display: flex;
       gap: 0;
@@ -392,7 +470,7 @@
 
     .del-tab {
       padding: 0.7rem 1.6rem;
-      font-size: 0.8rem;
+      font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -408,17 +486,11 @@
     }
 
     .del-tab:hover { color: var(--maroon-text); }
+    .del-tab.active { color: var(--maroon-text); border-bottom: 2px solid var(--maroon-text); }
 
-    .del-tab.active {
-      color: var(--maroon-text);
-      border-bottom: 2px solid var(--maroon-text);
-    }
-
-    /* Category panel */
     .del-panel { display: none; }
     .del-panel.active { display: block; }
 
-    /* Event accordion inside panels */
     .event-block {
       background: var(--white);
       border: 1px solid #E5E0D8;
@@ -440,16 +512,11 @@
 
     .event-header:hover { background: #FAF5F0; }
 
-    .event-header-left {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
+    .event-header-left { display: flex; align-items: center; gap: 0.8rem; }
 
     .event-icon {
       font-size: 1.1rem;
-      width: 34px;
-      height: 34px;
+      width: 34px; height: 34px;
       border-radius: 50%;
       background: var(--cream-bg);
       border: 1px solid #E0D8CC;
@@ -459,18 +526,8 @@
       flex-shrink: 0;
     }
 
-    .event-name {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--text-dark);
-    }
-
-    .event-chevron {
-      font-size: 0.75rem;
-      color: #BBB;
-      transition: transform 0.3s ease;
-    }
-
+    .event-name { font-size: 0.92rem; font-weight: 700; color: var(--text-dark); }
+    .event-chevron { font-size: 0.75rem; color: #BBB; transition: transform 0.3s; }
     .event-block.open .event-chevron { transform: rotate(180deg); }
 
     .event-body {
@@ -481,24 +538,22 @@
 
     .event-block.open .event-body { display: block; }
 
-    /* Tags */
     .tag-list { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.5rem; }
 
     .tag {
-      font-size: 0.72rem;
-      font-weight: 600;
+      font-size: 0.7rem;
+      font-weight: 700;
       padding: 0.2rem 0.55rem;
       border-radius: 4px;
       border: 1px solid;
     }
 
-    .tag-green  { background:#EDFAF3; color:#1A7A47; border-color:#B2DFC8; }
-    .tag-grey   { background:#F2F2F2; color:#777;    border-color:#DDD; }
+    .tag-green { background:#EDFAF3; color:#1A7A47; border-color:#B2DFC8; }
+    .tag-grey  { background:#F2F2F2; color:#777;    border-color:#DDD; }
 
-    /* ── Catering: checklist ── */
     .menu-section-title {
-      font-size: 0.7rem;
-      font-weight: 800;
+      font-size: 0.68rem;
+      font-weight: 700;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       color: #1A7A47;
@@ -515,14 +570,10 @@
       color: var(--text-dark);
     }
 
-    .menu-item-row.checked {
-      color: #AAA;
-      text-decoration: line-through;
-    }
+    .menu-item-row.checked { color: #AAA; text-decoration: line-through; }
 
     .menu-checkbox {
-      width: 18px;
-      height: 18px;
+      width: 18px; height: 18px;
       border: 2px solid #CCC;
       border-radius: 4px;
       cursor: pointer;
@@ -555,26 +606,19 @@
 
     .menu-item-remove:hover { color: var(--maroon-text); }
 
-    .add-menu-item-row {
-      display: flex;
-      gap: 0.5rem;
-      margin-top: 0.8rem;
-    }
+    .add-menu-item-row { display: flex; gap: 0.5rem; margin-top: 0.8rem; }
 
     .add-menu-item-row input {
       flex: 1;
       padding: 0.45rem 0.7rem;
       border: 1px dashed #CCC;
-      font-family: var(--font-body);
+      font-family: var(--font);
       font-size: 0.85rem;
       background: #FAFAFA;
       border-radius: 4px;
     }
 
-    .add-menu-item-row input:focus {
-      outline: none;
-      border-color: #1A7A47;
-    }
+    .add-menu-item-row input:focus { outline: none; border-color: #1A7A47; }
 
     .add-menu-item-btn {
       padding: 0.45rem 0.9rem;
@@ -582,7 +626,8 @@
       color: white;
       border: none;
       border-radius: 4px;
-      font-size: 0.8rem;
+      font-family: var(--font);
+      font-size: 0.78rem;
       font-weight: 700;
       cursor: pointer;
       transition: opacity 0.2s;
@@ -590,7 +635,6 @@
 
     .add-menu-item-btn:hover { opacity: 0.85; }
 
-    /* ── Photo upload zone ── */
     .upload-zone {
       margin-top: 0.8rem;
       border: 2px dashed #D5CFC7;
@@ -609,47 +653,34 @@
       align-items: center;
       gap: 0.35rem;
       color: #AAA;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       text-align: center;
       cursor: pointer;
     }
 
     .upload-zone-label span.upload-icon { font-size: 1.5rem; }
-    .upload-zone-label strong { color: var(--maroon-text); font-size: 0.82rem; }
+    .upload-zone-label strong { color: var(--maroon-text); font-size: 0.8rem; }
 
-    .upload-previews {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.7rem;
-    }
+    .upload-previews { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.7rem; }
 
     .upload-thumb {
       position: relative;
-      width: 72px;
-      height: 72px;
+      width: 72px; height: 72px;
       border-radius: 4px;
       overflow: hidden;
       border: 1px solid #DDD;
     }
 
-    .upload-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+    .upload-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     .upload-thumb-remove {
       position: absolute;
-      top: 2px;
-      right: 2px;
+      top: 2px; right: 2px;
       background: rgba(128,0,16,0.8);
       color: white;
       border: none;
       border-radius: 50%;
-      width: 18px;
-      height: 18px;
+      width: 18px; height: 18px;
       font-size: 0.6rem;
       cursor: pointer;
       display: flex;
@@ -657,101 +688,135 @@
       justify-content: center;
     }
 
-    .upload-count-note {
-      font-size: 0.72rem;
-      color: #AAA;
-      margin-top: 0.4rem;
-    }
+    .upload-count-note { font-size: 0.7rem; color: #AAA; margin-top: 0.4rem; }
 
-    /* Mobile Responsive Styles */
-    @media (max-width: 900px) {
+    /* ── MOBILE RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
       .slide-frame {
-        padding: 1.5rem;
-        margin: 1rem;
+        padding: 1.4rem 1.2rem;
+        margin: 0.75rem;
+        border-radius: 4px;
       }
 
-      nav {
-        flex-direction: column;
-        gap: 1rem;
-      }
+      .slide-title { font-size: 2.2rem; }
 
-      .nav-links {
+      .slide-header {
+        font-size: 0.62rem;
+        letter-spacing: 1px;
+        gap: 0.5rem;
         flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.8rem;
       }
 
-      .welcome-grid, .about-grid, .philosophy-grid, .inspiration-grid {
+      .welcome-grid,
+      .about-grid,
+      .philosophy-grid,
+      .inspiration-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      .slide-title {
-        font-size: 2.8rem;
+        gap: 1.5rem;
       }
 
       .welcome-image-container img,
       .about-image img,
       .philosophy-col-2 img,
       .inspiration-grid img {
-        height: 300px;
+        height: 240px;
       }
+
+      .philosophy-col-3 img { height: 160px; }
+
+      /* Stack inspiration so text comes first */
+      .inspiration-grid > div:first-child { order: 2; }
+      .inspiration-text { order: 1; }
+      .inspiration-grid > div:last-child { order: 3; }
+
+      .contact-container { padding: 1.4rem 1rem; }
+
+      .del-tab { padding: 0.6rem 0.9rem; font-size: 0.65rem; }
+
+      .del-tab-strip { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    }
+
+    @media (max-width: 480px) {
+      nav { padding: 0.9rem 1rem; }
+      .brand-logo { font-size: 0.85rem; }
+      .slide-title { font-size: 1.9rem; }
+      .contact-channels { flex-direction: column; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Clickable Navigation Header -->
+  <!-- Top Navigation -->
   <header>
     <nav>
-      <a href="#welcome" class="brand-logo" onclick="navigateTo('welcome')">SRI VIVAAH & CO</a>
+      <a href="#home" class="brand-logo" onclick="navigateTo('home')">SRI VIVAAH & CO</a>
+
+      <!-- Desktop nav -->
       <ul class="nav-links">
-        <li><a href="#welcome" id="nav-welcome" class="active" onclick="navigateTo('welcome')">Welcome</a></li>
-        <li><a href="#about" id="nav-about" onclick="navigateTo('about')">About Me</a></li>
-        <li><a href="#philosophy" id="nav-philosophy" onclick="navigateTo('philosophy')">Design Philosophy</a></li>
-        <li><a href="#inspiration" id="nav-inspiration" onclick="navigateTo('inspiration')">Design Inspiration</a></li>
-        <li><a href="#contact" id="nav-contact" onclick="navigateTo('contact')">Inquire</a></li>
-        <li><a href="#deliverables" id="nav-deliverables" onclick="navigateTo('deliverables')">Deliverables</a></li>
+        <li><a href="#home"         id="nav-home"         class="active" onclick="navigateTo('home')">Home</a></li>
+        <li><a href="#about"        id="nav-about"                       onclick="navigateTo('about')">About</a></li>
+        <li><a href="#services"     id="nav-services"                    onclick="navigateTo('services')">Services</a></li>
+        <li><a href="#gallery"      id="nav-gallery"                     onclick="navigateTo('gallery')">Gallery</a></li>
+        <li><a href="#wedding-guide" id="nav-wedding-guide"              onclick="navigateTo('wedding-guide')">Wedding Guide</a></li>
+        <li><a href="#faq"          id="nav-faq"                         onclick="navigateTo('faq')">FAQ</a></li>
+        <li><a href="#contact"      id="nav-contact"                     onclick="navigateTo('contact')">Contact</a></li>
       </ul>
+
+      <!-- Mobile hamburger -->
+      <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
+
+    <!-- Mobile drawer -->
+    <div class="mobile-nav" id="mobile-nav">
+      <ul>
+        <li><a href="#home"          id="mnav-home"         class="active" onclick="navigateTo('home');closeMenu()">Home</a></li>
+        <li><a href="#about"         id="mnav-about"                       onclick="navigateTo('about');closeMenu()">About</a></li>
+        <li><a href="#services"      id="mnav-services"                    onclick="navigateTo('services');closeMenu()">Services</a></li>
+        <li><a href="#gallery"       id="mnav-gallery"                     onclick="navigateTo('gallery');closeMenu()">Gallery</a></li>
+        <li><a href="#wedding-guide" id="mnav-wedding-guide"               onclick="navigateTo('wedding-guide');closeMenu()">Wedding Guide</a></li>
+        <li><a href="#faq"           id="mnav-faq"                         onclick="navigateTo('faq');closeMenu()">FAQ</a></li>
+        <li><a href="#contact"       id="mnav-contact"                     onclick="navigateTo('contact');closeMenu()">Contact</a></li>
+      </ul>
+    </div>
   </header>
 
   <main>
-    <!-- Page 1: Welcome -->
-    <section id="welcome" class="page-section active">
+    <!-- HOME (was Welcome) -->
+    <section id="home" class="page-section active">
       <div class="slide-frame dark-theme">
         <div class="slide-header">
           <span>WEDDING PLANNER</span>
           <span>2026</span>
           <span>@SRIVIVAAH&CO</span>
         </div>
-
         <div class="welcome-grid">
           <div class="welcome-left">
             <div>
-              <h1 class="slide-title editable-text">Welcome to<br>श्री VIVAAH & CO</h1>
+              <h1 class="slide-title">Welcome to<br>श्री VIVAAH & CO</h1>
               <div class="dots-indicator">
                 <span class="dot"></span>
                 <span class="dot"></span>
                 <span class="dot"></span>
               </div>
             </div>
-
             <div class="welcome-footer">
-              <span class="website-label editable-text">WEBSITE</span>
-              <span class="website-url editable-text">WWW.SRIVIVAAH.CO.IN</span>
+              <span class="website-label">WEBSITE</span>
+              <span class="website-url">WWW.SRIVIVAAH.CO.IN</span>
             </div>
           </div>
-
           <div class="welcome-image-container">
-            <!-- Decoration Image -->
-            <img src="decoration.png" alt="Sri Vivaah Wedding Decoration Arch" class="editable-image">
+            <img src="decoration.png" alt="Sri Vivaah Wedding Decoration Arch">
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Page 2: About Me -->
+    <!-- ABOUT -->
     <section id="about" class="page-section">
       <div class="slide-frame">
         <div class="slide-header">
@@ -759,73 +824,68 @@
           <span>2026</span>
           <span>@SRIVIVAAH</span>
         </div>
-
         <div class="about-grid">
           <div class="about-text">
-            <h1 class="slide-title editable-text">About Me</h1>
-            
-            <p class="editable-text">
-              A creative wedding designer who gets into the nittty gritty of the details and makes you big day magical.
-            </p>
-            
-            <p class="editable-text">
-              I have curated, planned, managed over 50+ weddings ranging from different religions, traditions and culture.
-            </p>
-            
-            <p class="editable-text">
-              A ritual that is specific to your family? We get it and got you covered.
-            </p>
-
+            <h1 class="slide-title">About Me</h1>
+            <p>A creative wedding designer who gets into the nitty gritty of the details and makes your big day magical.</p>
+            <p>I have curated, planned, managed over 50+ weddings ranging from different religions, traditions and culture.</p>
+            <p>A ritual that is specific to your family? We get it and got you covered.</p>
             <div class="dots-indicator">
               <span class="dot"></span>
               <span class="dot"></span>
               <span class="dot"></span>
             </div>
           </div>
-
           <div class="about-image">
-            <!-- Girl's Image -->
-            <img src="girl.png" alt="Shweta Patil - Wedding Designer" class="editable-image">
+            <img src="girl.png" alt="Shweta Patil - Wedding Designer">
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Page 3: Design Philosophy -->
-    <section id="philosophy" class="page-section">
+    <!-- SERVICES (coming soon) -->
+    <section id="services" class="page-section">
+      <div class="empty-page">
+        <div class="empty-page-icon">✨</div>
+        <h2>Services</h2>
+        <p>Coming soon — this section is being curated.</p>
+      </div>
+    </section>
+
+    <!-- GALLERY (coming soon) -->
+    <section id="gallery" class="page-section">
+      <div class="empty-page">
+        <div class="empty-page-icon">📸</div>
+        <h2>Gallery</h2>
+        <p>Coming soon — photos are being curated.</p>
+      </div>
+    </section>
+
+    <!-- WEDDING GUIDE (keeps old Design Philosophy + Inspiration content) -->
+    <section id="wedding-guide" class="page-section">
       <div class="slide-frame dark-theme">
         <div class="slide-header">
           <span>WEDDING PLANNER</span>
           <span>2026</span>
           <span>@SRIVIVAAH&CO</span>
         </div>
-
-        <h1 class="slide-title editable-text">Design<br>Philosophy</h1>
-
+        <h1 class="slide-title">Design<br>Philosophy</h1>
         <div class="philosophy-grid">
           <div class="philosophy-col-1">
-            <h3 class="editable-text">EXPRESSION OF IDENTITY</h3>
-            <p class="editable-text">Each wedding has it's own identity which constitutes of a unique blend of traditions, family centric rituals, language descendent riti riwaaj</p>
-
-            <h3 class="editable-text">TEAM AT SRI VIVAAH IS BUILT FOR THIS</h3>
-            <p class="editable-text">Having conducted 50+ marriages of</p>
+            <h3>Expression of Identity</h3>
+            <p>Each wedding has its own identity which constitutes of a unique blend of traditions, family centric rituals, language descendent riti riwaaj</p>
+            <h3>Team at Sri Vivaah is Built for This</h3>
+            <p>Having conducted 50+ marriages of diverse backgrounds</p>
           </div>
-
           <div class="philosophy-col-2">
-            <!-- Placeholder for Center Mandap Image -->
-            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" alt="Mandap Decor" class="editable-image">
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" alt="Mandap Decor">
           </div>
-
           <div class="philosophy-col-3">
-            <!-- Placeholder for Top Arch Image -->
-            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80" alt="Floral Entrance" class="editable-image">
-
-            <h3 class="editable-text">ATTENTION TO CRAFTSMANSHIP</h3>
-            <p class="editable-text">Design of stage, flowers, lights, sounds, food and everything else designed and discussed in advance</p>
-
-            <h3 class="editable-text">BALANCE BETWEEN CREATIVITY AND FUNCTION</h3>
-            <p class="editable-text">Execution on the big day is the biggest hastle. Our team makes the experience seamless and a grand visual experince</p>
-
+            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80" alt="Floral Entrance">
+            <h3>Attention to Craftsmanship</h3>
+            <p>Design of stage, flowers, lights, sounds, food and everything else designed and discussed in advance</p>
+            <h3>Balance Between Creativity and Function</h3>
+            <p>Execution on the big day is the biggest hassle. Our team makes the experience seamless and a grand visual experience</p>
             <div class="dots-indicator">
               <span class="dot"></span>
               <span class="dot"></span>
@@ -836,42 +896,16 @@
       </div>
     </section>
 
-    <!-- Page 4: Design Inspiration -->
-    <section id="inspiration" class="page-section">
-      <div class="slide-frame">
-        <div class="slide-header">
-          <span>WEDDING PLANNER</span>
-          <span>2026</span>
-          <span>@SRIVIVAAH</span>
-        </div>
-
-        <div class="inspiration-grid">
-          <div>
-            <!-- Placeholder for Left Mirror Image -->
-            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=600&q=80" alt="Welcome Mirror Board" class="editable-image">
-          </div>
-
-          <div class="inspiration-text">
-            <h1 class="slide-title editable-text">Design<br>Inspiration</h1>
-            <p class="editable-text">
-              The bride has a specific theme in mind and she expects the mood board to be replicated on her wedding day. No worries, we at Vovaah got you covered with over 30+ varities of designs for engagement, reception, wedding, sangeet, baraat styles that you can choose from and are open to working with new designs as well
-            </p>
-            <div class="dots-indicator">
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-            </div>
-          </div>
-
-          <div>
-            <!-- Placeholder for Right Door Decor Image -->
-            <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=600&q=80" alt="Traditional Door Entrance Decor" class="editable-image">
-          </div>
-        </div>
+    <!-- FAQ (coming soon) -->
+    <section id="faq" class="page-section">
+      <div class="empty-page">
+        <div class="empty-page-icon">💬</div>
+        <h2>FAQ</h2>
+        <p>Coming soon — frequently asked questions.</p>
       </div>
     </section>
 
-    <!-- Page 5: Contact / Inquiry Form -->
+    <!-- CONTACT -->
     <section id="contact" class="page-section">
       <div class="slide-frame">
         <div class="slide-header">
@@ -879,37 +913,43 @@
           <span>2026</span>
           <span>INQUIRE</span>
         </div>
+        <h1 class="slide-title" style="text-align:center;">Get in Touch</h1>
 
-        <h1 class="slide-title editable-text" style="text-align: center;">Get in Touch</h1>
-
+        <!-- Direct contact links -->
         <div class="contact-container">
+          <div class="contact-channels">
+            <a class="contact-chip" href="https://wa.me/918780096354" target="_blank" rel="noopener">
+              📱 WhatsApp Us
+            </a>
+            <a class="contact-chip" href="mailto:shwetaaaap2026@gmail.com">
+              ✉️ Email Us
+            </a>
+          </div>
+
           <form id="inquiryForm" onsubmit="handleFormSubmit(event)">
             <div class="form-group">
               <label for="fullName">Full Name</label>
               <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
             </div>
-
             <div class="form-group">
               <label for="mobileNumber">Mobile Number</label>
               <input type="tel" id="mobileNumber" name="mobileNumber" placeholder="Enter your mobile number" required>
             </div>
-
             <div class="form-group">
-              <label for="phoneNumber">Alternative Phone Number</label>
-              <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter alternative phone number">
+              <label for="phoneNumber">Alternative Phone</label>
+              <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Alternative phone number">
             </div>
-
             <div class="form-group">
               <label for="inquiryDetails">Inquiry Details</label>
               <textarea id="inquiryDetails" name="inquiryDetails" rows="4" placeholder="Tell us about your wedding date, venue, or requirements..." required></textarea>
             </div>
-
-            <button type="submit" class="submit-btn">Submit Inquiry</button>
+            <button type="submit" class="submit-btn">Send Inquiry</button>
           </form>
         </div>
       </div>
     </section>
-    <!-- Page 6: Deliverables -->
+
+    <!-- DELIVERABLES (hidden from nav, accessible via direct link) -->
     <section id="deliverables" class="page-section">
       <div class="slide-frame">
         <div class="slide-header">
@@ -917,296 +957,179 @@
           <span>2026</span>
           <span>DELIVERABLES</span>
         </div>
-
         <div class="deliverables-header-row">
-          <div class="deliverables-title-block">
+          <div>
             <h1 class="slide-title" style="margin-bottom:0.3rem;">Deliverables</h1>
             <p class="deliverables-subtitle">Track what's promised for each event</p>
           </div>
         </div>
 
-        <!-- Category Tab Strip -->
         <div class="del-tab-strip">
           <div class="del-tab active" onclick="switchDelTab('photography')">📷 Photography</div>
           <div class="del-tab" onclick="switchDelTab('decoration')">🌸 Decoration</div>
           <div class="del-tab" onclick="switchDelTab('catering')">🍽️ Catering</div>
         </div>
 
-        <!-- ═══ PHOTOGRAPHY PANEL ═══ -->
+        <!-- PHOTOGRAPHY PANEL -->
         <div class="del-panel active" id="del-photography">
-
-          <!-- Engagement -->
-          <div class="event-block open">
-            <div class="event-header" onclick="toggleEvent(this)">
-              <div class="event-header-left">
-                <div class="event-icon">💍</div>
-                <span class="event-name">Engagement</span>
-              </div>
-              <span class="event-chevron">▼</span>
-            </div>
-            <div class="event-body">
-              <div class="tag-list">
-                <span class="tag tag-green">Candid</span>
-                <span class="tag tag-green">Traditional</span>
-                <span class="tag tag-green">Edited</span>
-              </div>
-              <div class="upload-zone" onclick="triggerUpload('eng-photo')">
-                <label class="upload-zone-label" for="eng-photo">
-                  <span class="upload-icon">📁</span>
-                  <strong>Click to upload photos</strong>
-                  <span>Max 5 photos · JPG, PNG</span>
-                </label>
-              </div>
-              <input type="file" id="eng-photo" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'eng-photo-previews')">
-              <div class="upload-previews" id="eng-photo-previews"></div>
-              <div class="upload-count-note" id="eng-photo-note"></div>
-            </div>
-          </div>
-
-          <!-- Baraat — no photography -->
-          <div class="event-block">
-            <div class="event-header" onclick="toggleEvent(this)">
-              <div class="event-header-left">
-                <div class="event-icon">🐴</div>
-                <span class="event-name">Baraat</span>
-              </div>
-              <span class="event-chevron">▼</span>
-            </div>
-            <div class="event-body">
-              <div class="tag-list">
-                <span class="tag tag-green">Candid</span>
-                <span class="tag tag-green">Procession Coverage</span>
-              </div>
-              <div class="upload-zone" onclick="triggerUpload('bar-photo')">
-                <label class="upload-zone-label" for="bar-photo">
-                  <span class="upload-icon">📁</span>
-                  <strong>Click to upload photos</strong>
-                  <span>Max 5 photos · JPG, PNG</span>
-                </label>
-              </div>
-              <input type="file" id="bar-photo" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'bar-photo-previews')">
-              <div class="upload-previews" id="bar-photo-previews"></div>
-              <div class="upload-count-note" id="bar-photo-note"></div>
-            </div>
-          </div>
-
-          <!-- Sangeet -->
-          <div class="event-block">
-            <div class="event-header" onclick="toggleEvent(this)">
-              <div class="event-header-left">
-                <div class="event-icon">🎶</div>
-                <span class="event-name">Sangeet</span>
-              </div>
-              <span class="event-chevron">▼</span>
-            </div>
-            <div class="event-body">
-              <div class="tag-list">
-                <span class="tag tag-green">Candid</span>
-                <span class="tag tag-green">Edited</span>
-              </div>
-              <div class="upload-zone" onclick="triggerUpload('san-photo')">
-                <label class="upload-zone-label" for="san-photo">
-                  <span class="upload-icon">📁</span>
-                  <strong>Click to upload photos</strong>
-                  <span>Max 5 photos · JPG, PNG</span>
-                </label>
-              </div>
-              <input type="file" id="san-photo" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'san-photo-previews')">
-              <div class="upload-previews" id="san-photo-previews"></div>
-              <div class="upload-count-note" id="san-photo-note"></div>
-            </div>
-          </div>
-
-          <!-- Muhurta -->
-          <div class="event-block">
-            <div class="event-header" onclick="toggleEvent(this)">
-              <div class="event-header-left">
-                <div class="event-icon">🪔</div>
-                <span class="event-name">Muhurta</span>
-              </div>
-              <span class="event-chevron">▼</span>
-            </div>
-            <div class="event-body">
-              <div class="tag-list">
-                <span class="tag tag-green">Ritual Coverage</span>
-                <span class="tag tag-green">Edited</span>
-              </div>
-              <div class="upload-zone" onclick="triggerUpload('muh-photo')">
-                <label class="upload-zone-label" for="muh-photo">
-                  <span class="upload-icon">📁</span>
-                  <strong>Click to upload photos</strong>
-                  <span>Max 5 photos · JPG, PNG</span>
-                </label>
-              </div>
-              <input type="file" id="muh-photo" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'muh-photo-previews')">
-              <div class="upload-previews" id="muh-photo-previews"></div>
-              <div class="upload-count-note" id="muh-photo-note"></div>
-            </div>
-          </div>
-
-          <!-- Reception -->
-          <div class="event-block">
-            <div class="event-header" onclick="toggleEvent(this)">
-              <div class="event-header-left">
-                <div class="event-icon">🥂</div>
-                <span class="event-name">Reception</span>
-              </div>
-              <span class="event-chevron">▼</span>
-            </div>
-            <div class="event-body">
-              <div class="tag-list">
-                <span class="tag tag-green">Candid</span>
-                <span class="tag tag-green">Traditional</span>
-                <span class="tag tag-green">Edited</span>
-              </div>
-              <div class="upload-zone" onclick="triggerUpload('rec-photo')">
-                <label class="upload-zone-label" for="rec-photo">
-                  <span class="upload-icon">📁</span>
-                  <strong>Click to upload photos</strong>
-                  <span>Max 5 photos · JPG, PNG</span>
-                </label>
-              </div>
-              <input type="file" id="rec-photo" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'rec-photo-previews')">
-              <div class="upload-previews" id="rec-photo-previews"></div>
-              <div class="upload-count-note" id="rec-photo-note"></div>
-            </div>
-          </div>
-
-        </div><!-- /photography panel -->
-
-        <!-- ═══ DECORATION PANEL ═══ -->
-        <div class="del-panel" id="del-decoration">
-
-          <!-- Engagement -->
           <div class="event-block open">
             <div class="event-header" onclick="toggleEvent(this)">
               <div class="event-header-left"><div class="event-icon">💍</div><span class="event-name">Engagement</span></div>
               <span class="event-chevron">▼</span>
             </div>
             <div class="event-body">
-              <div class="tag-list">
-                <span class="tag tag-green">Floral</span>
-                <span class="tag tag-green">Stage Setup</span>
-                <span class="tag tag-green">Lighting</span>
+              <div class="tag-list"><span class="tag tag-green">Candid</span><span class="tag tag-green">Traditional</span><span class="tag tag-green">Edited</span></div>
+              <div class="upload-zone" onclick="triggerUpload('eng-photo')">
+                <label class="upload-zone-label" for="eng-photo"><span class="upload-icon">📁</span><strong>Click to upload photos</strong><span>Max 5 · JPG, PNG</span></label>
               </div>
-              <div class="upload-zone" onclick="triggerUpload('eng-dec')">
-                <label class="upload-zone-label" for="eng-dec">
-                  <span class="upload-icon">📁</span>
-                  <strong>Upload decoration references</strong>
-                  <span>Max 5 photos · JPG, PNG</span>
-                </label>
-              </div>
-              <input type="file" id="eng-dec" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'eng-dec-previews')">
-              <div class="upload-previews" id="eng-dec-previews"></div>
-              <div class="upload-count-note" id="eng-dec-note"></div>
+              <input type="file" id="eng-photo" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'eng-photo-previews')">
+              <div class="upload-previews" id="eng-photo-previews"></div>
+              <div class="upload-count-note" id="eng-photo-note"></div>
             </div>
           </div>
-
-          <!-- Baraat -->
           <div class="event-block">
             <div class="event-header" onclick="toggleEvent(this)">
               <div class="event-header-left"><div class="event-icon">🐴</div><span class="event-name">Baraat</span></div>
               <span class="event-chevron">▼</span>
             </div>
             <div class="event-body">
-              <div class="tag-list">
-                <span class="tag tag-green">Decorated Horse</span>
-                <span class="tag tag-green">Floral Arch</span>
+              <div class="tag-list"><span class="tag tag-green">Candid</span><span class="tag tag-green">Procession Coverage</span></div>
+              <div class="upload-zone" onclick="triggerUpload('bar-photo')">
+                <label class="upload-zone-label" for="bar-photo"><span class="upload-icon">📁</span><strong>Click to upload photos</strong><span>Max 5 · JPG, PNG</span></label>
               </div>
-              <div class="upload-zone" onclick="triggerUpload('bar-dec')">
-                <label class="upload-zone-label" for="bar-dec">
-                  <span class="upload-icon">📁</span>
-                  <strong>Upload decoration references</strong>
-                  <span>Max 5 photos · JPG, PNG</span>
-                </label>
-              </div>
-              <input type="file" id="bar-dec" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'bar-dec-previews')">
-              <div class="upload-previews" id="bar-dec-previews"></div>
-              <div class="upload-count-note" id="bar-dec-note"></div>
+              <input type="file" id="bar-photo" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'bar-photo-previews')">
+              <div class="upload-previews" id="bar-photo-previews"></div>
+              <div class="upload-count-note" id="bar-photo-note"></div>
             </div>
           </div>
-
-          <!-- Sangeet -->
           <div class="event-block">
             <div class="event-header" onclick="toggleEvent(this)">
               <div class="event-header-left"><div class="event-icon">🎶</div><span class="event-name">Sangeet</span></div>
               <span class="event-chevron">▼</span>
             </div>
             <div class="event-body">
-              <div class="tag-list">
-                <span class="tag tag-green">Stage</span>
-                <span class="tag tag-green">Floral</span>
-                <span class="tag tag-green">Lighting</span>
+              <div class="tag-list"><span class="tag tag-green">Candid</span><span class="tag tag-green">Edited</span></div>
+              <div class="upload-zone" onclick="triggerUpload('san-photo')">
+                <label class="upload-zone-label" for="san-photo"><span class="upload-icon">📁</span><strong>Click to upload photos</strong><span>Max 5 · JPG, PNG</span></label>
               </div>
-              <div class="upload-zone" onclick="triggerUpload('san-dec')">
-                <label class="upload-zone-label" for="san-dec">
-                  <span class="upload-icon">📁</span>
-                  <strong>Upload decoration references</strong>
-                  <span>Max 5 photos · JPG, PNG</span>
-                </label>
-              </div>
-              <input type="file" id="san-dec" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'san-dec-previews')">
-              <div class="upload-previews" id="san-dec-previews"></div>
-              <div class="upload-count-note" id="san-dec-note"></div>
+              <input type="file" id="san-photo" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'san-photo-previews')">
+              <div class="upload-previews" id="san-photo-previews"></div>
+              <div class="upload-count-note" id="san-photo-note"></div>
             </div>
           </div>
-
-          <!-- Muhurta -->
           <div class="event-block">
             <div class="event-header" onclick="toggleEvent(this)">
               <div class="event-header-left"><div class="event-icon">🪔</div><span class="event-name">Muhurta</span></div>
               <span class="event-chevron">▼</span>
             </div>
             <div class="event-body">
-              <div class="tag-list">
-                <span class="tag tag-green">Mandap</span>
-                <span class="tag tag-green">Pooja Setup</span>
-                <span class="tag tag-green">Floral</span>
+              <div class="tag-list"><span class="tag tag-green">Ritual Coverage</span><span class="tag tag-green">Edited</span></div>
+              <div class="upload-zone" onclick="triggerUpload('muh-photo')">
+                <label class="upload-zone-label" for="muh-photo"><span class="upload-icon">📁</span><strong>Click to upload photos</strong><span>Max 5 · JPG, PNG</span></label>
               </div>
-              <div class="upload-zone" onclick="triggerUpload('muh-dec')">
-                <label class="upload-zone-label" for="muh-dec">
-                  <span class="upload-icon">📁</span>
-                  <strong>Upload decoration references</strong>
-                  <span>Max 5 photos · JPG, PNG</span>
-                </label>
-              </div>
-              <input type="file" id="muh-dec" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'muh-dec-previews')">
-              <div class="upload-previews" id="muh-dec-previews"></div>
-              <div class="upload-count-note" id="muh-dec-note"></div>
+              <input type="file" id="muh-photo" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'muh-photo-previews')">
+              <div class="upload-previews" id="muh-photo-previews"></div>
+              <div class="upload-count-note" id="muh-photo-note"></div>
             </div>
           </div>
-
-          <!-- Reception -->
           <div class="event-block">
             <div class="event-header" onclick="toggleEvent(this)">
               <div class="event-header-left"><div class="event-icon">🥂</div><span class="event-name">Reception</span></div>
               <span class="event-chevron">▼</span>
             </div>
             <div class="event-body">
-              <div class="tag-list">
-                <span class="tag tag-green">Floral</span>
-                <span class="tag tag-green">Stage Setup</span>
-                <span class="tag tag-green">Lighting</span>
+              <div class="tag-list"><span class="tag tag-green">Candid</span><span class="tag tag-green">Traditional</span><span class="tag tag-green">Edited</span></div>
+              <div class="upload-zone" onclick="triggerUpload('rec-photo')">
+                <label class="upload-zone-label" for="rec-photo"><span class="upload-icon">📁</span><strong>Click to upload photos</strong><span>Max 5 · JPG, PNG</span></label>
               </div>
+              <input type="file" id="rec-photo" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'rec-photo-previews')">
+              <div class="upload-previews" id="rec-photo-previews"></div>
+              <div class="upload-count-note" id="rec-photo-note"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DECORATION PANEL -->
+        <div class="del-panel" id="del-decoration">
+          <div class="event-block open">
+            <div class="event-header" onclick="toggleEvent(this)">
+              <div class="event-header-left"><div class="event-icon">💍</div><span class="event-name">Engagement</span></div>
+              <span class="event-chevron">▼</span>
+            </div>
+            <div class="event-body">
+              <div class="tag-list"><span class="tag tag-green">Floral</span><span class="tag tag-green">Stage Setup</span><span class="tag tag-green">Lighting</span></div>
+              <div class="upload-zone" onclick="triggerUpload('eng-dec')">
+                <label class="upload-zone-label" for="eng-dec"><span class="upload-icon">📁</span><strong>Upload decoration references</strong><span>Max 5 · JPG, PNG</span></label>
+              </div>
+              <input type="file" id="eng-dec" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'eng-dec-previews')">
+              <div class="upload-previews" id="eng-dec-previews"></div>
+              <div class="upload-count-note" id="eng-dec-note"></div>
+            </div>
+          </div>
+          <div class="event-block">
+            <div class="event-header" onclick="toggleEvent(this)">
+              <div class="event-header-left"><div class="event-icon">🐴</div><span class="event-name">Baraat</span></div>
+              <span class="event-chevron">▼</span>
+            </div>
+            <div class="event-body">
+              <div class="tag-list"><span class="tag tag-green">Decorated Horse</span><span class="tag tag-green">Floral Arch</span></div>
+              <div class="upload-zone" onclick="triggerUpload('bar-dec')">
+                <label class="upload-zone-label" for="bar-dec"><span class="upload-icon">📁</span><strong>Upload decoration references</strong><span>Max 5 · JPG, PNG</span></label>
+              </div>
+              <input type="file" id="bar-dec" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'bar-dec-previews')">
+              <div class="upload-previews" id="bar-dec-previews"></div>
+              <div class="upload-count-note" id="bar-dec-note"></div>
+            </div>
+          </div>
+          <div class="event-block">
+            <div class="event-header" onclick="toggleEvent(this)">
+              <div class="event-header-left"><div class="event-icon">🎶</div><span class="event-name">Sangeet</span></div>
+              <span class="event-chevron">▼</span>
+            </div>
+            <div class="event-body">
+              <div class="tag-list"><span class="tag tag-green">Stage</span><span class="tag tag-green">Floral</span><span class="tag tag-green">Lighting</span></div>
+              <div class="upload-zone" onclick="triggerUpload('san-dec')">
+                <label class="upload-zone-label" for="san-dec"><span class="upload-icon">📁</span><strong>Upload decoration references</strong><span>Max 5 · JPG, PNG</span></label>
+              </div>
+              <input type="file" id="san-dec" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'san-dec-previews')">
+              <div class="upload-previews" id="san-dec-previews"></div>
+              <div class="upload-count-note" id="san-dec-note"></div>
+            </div>
+          </div>
+          <div class="event-block">
+            <div class="event-header" onclick="toggleEvent(this)">
+              <div class="event-header-left"><div class="event-icon">🪔</div><span class="event-name">Muhurta</span></div>
+              <span class="event-chevron">▼</span>
+            </div>
+            <div class="event-body">
+              <div class="tag-list"><span class="tag tag-green">Mandap</span><span class="tag tag-green">Pooja Setup</span><span class="tag tag-green">Floral</span></div>
+              <div class="upload-zone" onclick="triggerUpload('muh-dec')">
+                <label class="upload-zone-label" for="muh-dec"><span class="upload-icon">📁</span><strong>Upload decoration references</strong><span>Max 5 · JPG, PNG</span></label>
+              </div>
+              <input type="file" id="muh-dec" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'muh-dec-previews')">
+              <div class="upload-previews" id="muh-dec-previews"></div>
+              <div class="upload-count-note" id="muh-dec-note"></div>
+            </div>
+          </div>
+          <div class="event-block">
+            <div class="event-header" onclick="toggleEvent(this)">
+              <div class="event-header-left"><div class="event-icon">🥂</div><span class="event-name">Reception</span></div>
+              <span class="event-chevron">▼</span>
+            </div>
+            <div class="event-body">
+              <div class="tag-list"><span class="tag tag-green">Floral</span><span class="tag tag-green">Stage Setup</span><span class="tag tag-green">Lighting</span></div>
               <div class="upload-zone" onclick="triggerUpload('rec-dec')">
-                <label class="upload-zone-label" for="rec-dec">
-                  <span class="upload-icon">📁</span>
-                  <strong>Upload decoration references</strong>
-                  <span>Max 5 photos · JPG, PNG</span>
-                </label>
+                <label class="upload-zone-label" for="rec-dec"><span class="upload-icon">📁</span><strong>Upload decoration references</strong><span>Max 5 · JPG, PNG</span></label>
               </div>
               <input type="file" id="rec-dec" accept="image/*" multiple style="display:none" onchange="handleUpload(this,'rec-dec-previews')">
               <div class="upload-previews" id="rec-dec-previews"></div>
               <div class="upload-count-note" id="rec-dec-note"></div>
             </div>
           </div>
+        </div>
 
-        </div><!-- /decoration panel -->
-
-        <!-- ═══ CATERING PANEL ═══ -->
+        <!-- CATERING PANEL -->
         <div class="del-panel" id="del-catering">
-
-          <!-- Engagement -->
           <div class="event-block open">
             <div class="event-header" onclick="toggleEvent(this)">
               <div class="event-header-left"><div class="event-icon">💍</div><span class="event-name">Engagement</span></div>
@@ -1227,8 +1150,6 @@
               </div>
             </div>
           </div>
-
-          <!-- Baraat -->
           <div class="event-block">
             <div class="event-header" onclick="toggleEvent(this)">
               <div class="event-header-left"><div class="event-icon">🐴</div><span class="event-name">Baraat</span></div>
@@ -1246,8 +1167,6 @@
               </div>
             </div>
           </div>
-
-          <!-- Sangeet -->
           <div class="event-block">
             <div class="event-header" onclick="toggleEvent(this)">
               <div class="event-header-left"><div class="event-icon">🎶</div><span class="event-name">Sangeet</span></div>
@@ -1267,8 +1186,6 @@
               </div>
             </div>
           </div>
-
-          <!-- Muhurta -->
           <div class="event-block">
             <div class="event-header" onclick="toggleEvent(this)">
               <div class="event-header-left"><div class="event-icon">🪔</div><span class="event-name">Muhurta</span></div>
@@ -1287,8 +1204,6 @@
               </div>
             </div>
           </div>
-
-          <!-- Reception -->
           <div class="event-block">
             <div class="event-header" onclick="toggleEvent(this)">
               <div class="event-header-left"><div class="event-icon">🥂</div><span class="event-name">Reception</span></div>
@@ -1309,120 +1224,88 @@
               </div>
             </div>
           </div>
-
-        </div><!-- /catering panel -->
-
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- Navigation Routing Script -->
   <script>
+    // ── Navigation ──────────────────────────────────────────────────────────
     function navigateTo(pageId) {
-      // Hide all page sections
-      const sections = document.querySelectorAll('.page-section');
-      sections.forEach(section => section.classList.remove('active'));
-
-      // Remove active state from nav links
-      const navLinks = document.querySelectorAll('.nav-links a');
-      navLinks.forEach(link => link.classList.remove('active'));
-
-      // Display targeted section
-      const targetSection = document.getElementById(pageId);
-      if (targetSection) {
-        targetSection.classList.add('active');
-      }
-
-      // Highlight active nav item
-      const activeNav = document.getElementById(`nav-${pageId}`);
-      if (activeNav) {
-        activeNav.classList.add('active');
-      }
-
-      // Scroll top smoothly
+      document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.nav-links a, .mobile-nav a').forEach(l => l.classList.remove('active'));
+      const sec = document.getElementById(pageId);
+      if (sec) sec.classList.add('active');
+      ['nav-', 'mnav-'].forEach(prefix => {
+        const el = document.getElementById(prefix + pageId);
+        if (el) el.classList.add('active');
+      });
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Handle initial hash in URL
-    window.addEventListener('hashchange', () => {
-      const hash = window.location.hash.replace('#', '');
-      if (hash) {
-        navigateTo(hash);
+    // ── Mobile hamburger ────────────────────────────────────────────────────
+    function toggleMenu() {
+      document.getElementById('hamburger').classList.toggle('open');
+      document.getElementById('mobile-nav').classList.toggle('open');
+    }
+
+    function closeMenu() {
+      document.getElementById('hamburger').classList.remove('open');
+      document.getElementById('mobile-nav').classList.remove('open');
+    }
+
+    // Close drawer on outside click
+    document.addEventListener('click', e => {
+      const nav = document.getElementById('mobile-nav');
+      const burger = document.getElementById('hamburger');
+      if (nav.classList.contains('open') && !nav.contains(e.target) && !burger.contains(e.target)) {
+        closeMenu();
       }
     });
 
-    // ─── Deliverables: Tab switching ────────────────────────────────────
-
+    // ── Deliverables tabs ───────────────────────────────────────────────────
     function switchDelTab(tabId) {
       document.querySelectorAll('.del-tab').forEach(t => t.classList.remove('active'));
       document.querySelectorAll('.del-panel').forEach(p => p.classList.remove('active'));
       document.getElementById('del-' + tabId).classList.add('active');
-      // Highlight correct tab button
       document.querySelectorAll('.del-tab').forEach(t => {
         if (t.getAttribute('onclick').includes(tabId)) t.classList.add('active');
       });
     }
 
-    // ─── Deliverables: Accordion ─────────────────────────────────────────
-
     function toggleEvent(header) {
       header.closest('.event-block').classList.toggle('open');
     }
 
-    // ─── Deliverables: Photo upload (max 5) ─────────────────────────────
-
-    // Track file lists per input id
+    // ── Photo upload ────────────────────────────────────────────────────────
     const uploadedFiles = {};
 
-    function triggerUpload(inputId) {
-      document.getElementById(inputId).click();
-    }
+    function triggerUpload(inputId) { document.getElementById(inputId).click(); }
 
     function handleUpload(input, previewId) {
       const id = input.id;
       if (!uploadedFiles[id]) uploadedFiles[id] = [];
-
-      const existing = uploadedFiles[id].length;
-      const incoming = Array.from(input.files);
-      const allowed = 5 - existing;
-
-      if (allowed <= 0) {
-        alert('Maximum 5 photos already uploaded for this event.');
-        input.value = '';
-        return;
-      }
-
-      const toAdd = incoming.slice(0, allowed);
-      if (incoming.length > allowed) {
-        alert(`Only ${allowed} more photo(s) can be added (max 5). Extra files were skipped.`);
-      }
-
+      const allowed = 5 - uploadedFiles[id].length;
+      if (allowed <= 0) { alert('Maximum 5 photos already uploaded.'); input.value = ''; return; }
+      const toAdd = Array.from(input.files).slice(0, allowed);
+      if (input.files.length > allowed) alert(`Only ${allowed} more photo(s) can be added.`);
       toAdd.forEach(file => {
         const reader = new FileReader();
-        reader.onload = e => {
-          uploadedFiles[id].push({ name: file.name, src: e.target.result });
-          renderPreviews(id, previewId);
-        };
+        reader.onload = e => { uploadedFiles[id].push({ name: file.name, src: e.target.result }); renderPreviews(id, previewId); };
         reader.readAsDataURL(file);
       });
-
       input.value = '';
     }
 
     function renderPreviews(inputId, previewId) {
-      const container = document.getElementById(previewId);
-      const noteId = previewId.replace('-previews', '-note');
       const files = uploadedFiles[inputId] || [];
-
-      container.innerHTML = files.map((f, i) => `
+      document.getElementById(previewId).innerHTML = files.map((f, i) => `
         <div class="upload-thumb">
           <img src="${f.src}" alt="${f.name}">
           <button class="upload-thumb-remove" onclick="removeUpload('${inputId}','${previewId}',${i})">×</button>
-        </div>
-      `).join('');
-
-      const note = document.getElementById(noteId);
-      if (note) note.textContent = files.length > 0 ? `${files.length}/5 photo${files.length !== 1 ? 's' : ''} uploaded` : '';
+        </div>`).join('');
+      const note = document.getElementById(previewId.replace('-previews', '-note'));
+      if (note) note.textContent = files.length ? `${files.length}/5 uploaded` : '';
     }
 
     function removeUpload(inputId, previewId, index) {
@@ -1430,54 +1313,52 @@
       renderPreviews(inputId, previewId);
     }
 
-    // ─── Deliverables: Catering menu items ──────────────────────────────
-
+    // ── Catering checklist ──────────────────────────────────────────────────
     function toggleMenuItem(row) {
-      // Prevent toggling when × was clicked
       row.classList.toggle('checked');
-      const box = row.querySelector('.menu-checkbox');
-      box.textContent = row.classList.contains('checked') ? '✓' : '';
+      row.querySelector('.menu-checkbox').textContent = row.classList.contains('checked') ? '✓' : '';
     }
 
-    function removeMenuItem(e, btn) {
-      e.stopPropagation();
-      btn.closest('.menu-item-row').remove();
-    }
+    function removeMenuItem(e, btn) { e.stopPropagation(); btn.closest('.menu-item-row').remove(); }
 
     function addMenuItem(listId, inputId) {
       const input = document.getElementById(inputId);
       const val = input.value.trim();
       if (!val) return;
-
-      const list = document.getElementById(listId);
       const row = document.createElement('div');
       row.className = 'menu-item-row';
       row.setAttribute('onclick', 'toggleMenuItem(this)');
-      row.innerHTML = `
-        <div class="menu-checkbox"></div>
-        <span class="menu-item-label">${val}</span>
-        <button class="menu-item-remove" onclick="removeMenuItem(event,this)">×</button>
-      `;
-      list.appendChild(row);
+      row.innerHTML = `<div class="menu-checkbox"></div><span class="menu-item-label">${val}</span><button class="menu-item-remove" onclick="removeMenuItem(event,this)">×</button>`;
+      document.getElementById(listId).appendChild(row);
       input.value = '';
       input.focus();
     }
 
-    // Allow Enter key to add menu item
     document.addEventListener('keydown', e => {
       if (e.key === 'Enter' && e.target.matches('.add-menu-item-row input')) {
-        const inputId = e.target.id;
-        const listId = inputId.replace('-input', '-list');
-        addMenuItem(listId, inputId);
+        addMenuItem(e.target.id.replace('-input', '-list'), e.target.id);
       }
     });
 
-    // ─── Contact Form ────────────────────────────────────────────────────
+    // ── Contact form → WhatsApp + email ────────────────────────────────────
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const name    = document.getElementById('fullName').value.trim();
+      const mobile  = document.getElementById('mobileNumber').value.trim();
+      const details = document.getElementById('inquiryDetails').value.trim();
 
-    // Form submission action
-    function handleFormSubmit(event) {
-      event.preventDefault();
-      alert('Thank you! Your inquiry has been sent to Sri Vivaah & Co.');
+      const msg = encodeURIComponent(
+        `Hi Sri Vivaah & Co! 🌸\n\nName: ${name}\nMobile: ${mobile}\n\nInquiry:\n${details}`
+      );
+
+      // Open WhatsApp with pre-filled message
+      window.open(`https://wa.me/918780096354?text=${msg}`, '_blank');
+
+      // Also open email draft
+      const subject = encodeURIComponent(`Wedding Inquiry from ${name}`);
+      const body    = encodeURIComponent(`Name: ${name}\nMobile: ${mobile}\n\n${details}`);
+      window.location.href = `mailto:shwetaaaap2026@gmail.com?subject=${subject}&body=${body}`;
+
       document.getElementById('inquiryForm').reset();
     }
   </script>
